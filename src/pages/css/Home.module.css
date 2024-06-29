@@ -1,0 +1,50 @@
+.wellcome {
+    display: flex;
+    text-align: center;
+    color: white;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}
+
+.wellcome h1 {
+    display: flex;
+    flex-direction: column;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+.wellcome h1 span {
+    color: #f29559;
+    letter-spacing: 0.8rem;
+}
+
+.btn {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn span {
+    color: white;
+    font-weight: lighter;
+    margin-bottom: 1rem;
+}
+
+.btn button {
+    padding: 1rem 1.2rem;
+    background: transparent;
+    border-radius: 30px;
+    color: #f29559;
+    border: 3px solid #f29559;
+    font-weight: bold;
+    width: 120px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn button:hover {
+    color: white;
+    background-color: #f29559;
+}

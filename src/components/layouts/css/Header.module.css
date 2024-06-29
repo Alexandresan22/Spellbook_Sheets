@@ -1,0 +1,27 @@
+header {
+    width: 100vw;
+    background-color: transparent;
+}
+
+nav a {
+    text-decoration: none;
+    color: #f2d492;
+    margin: 0 2rem;
+}
+
+nav ul {
+    color: #f2d492;
+    font-weight: bold;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    list-style: none;
+}
+
+nav img {
+    margin: 0 2rem;
+}

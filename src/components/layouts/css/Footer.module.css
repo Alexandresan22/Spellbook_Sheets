@@ -1,0 +1,34 @@
+footer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: #f29559;
+    padding: 2rem 0 0.6rem 0;
+    text-align: center;
+}
+
+footer ul {
+    display: flex;
+    justify-content: space-evenly;
+    width: 200px;
+    gap: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+footer ul img {
+    width: 24px;
+}
+footer span {
+    color: white;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+footer span {
+    text-align: center;
+}
