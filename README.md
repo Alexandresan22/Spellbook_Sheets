@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Spellbook Sheets: Gerenciador de fichas de RPG
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse projeto está sendo feito por [Alexandre Santos](https://www.linkedin.com/in/alexandre-santos-843820205/)
 
-## Available Scripts
+## O que é Spellbook Sheets?
 
-In the project directory, you can run:
+Spellbook Sheets é um site que tem como objetivo criar e gerenciar fichas do RPG de mesa [Mundo de Ovannam](https://www.wattpad.com/story/243589045-).
+O RPG de mesa foi também criado por Alexandre Santos, sem base mecânica em RPG's como D&D ou similares, foi uma proposta de divertimento pessoal.
 
-### `npm start`
+S.S poderá criar novas fichas personalizadas para esse sistema de jogo, automatizando processos dos jogadores e dando mais liberdade criativa para os jogadores.
+Além da criação também há o gerenciamento de itens, status básicos dos personagens entre outras funções práticas.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Qual a proposta do projeto?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Como estudante na área de desenvolvimento de sites, procuro aprimorar meu conhecimento em react js, estrutura semântica de html e aperfeiçoar meus conhecimentos em CSS. Sou um estudante autodidata, por falta de recursos, porém com grande determinação de aprender mais. Estou na jornada desde o meio de 2023 e procuro sempre progredir mais com meu conhecimento;
 
-### `npm test`
+Atualmente está sendo estudado requisições a APi's, react router dom, json-server e também colocando em prática aulas passadas de react.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Aplicações que busco incluir no projeto`
 
-### `npm run build`
+Não tenho conhecimento de redes ainda, porém planejo conectar o controle do Mestre da mesa com as demais fichas, assim "disponibilizando" itens aos jogadores por um comando remoto, mostrando imagens em seus monitores, áudios, texto tornando a jogatina muito mais dinâmica e divertimento aos participantes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `Objetivos para a versão 1.0`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Procuro inicialmente fazer com que a criação de fichas, gerenciamento dos elementos básicos tornem-se totalmente funcionais antes de aplicar qualquer feature. O projeto inicial está presente no [Prototipo no Figma](https://www.figma.com/proto/ofMdaL0McYxzJHfnyNOb7e/Ficha-de-RPG---Site?node-id=27-10&t=SNh1WwJS3QUxzY03-1&starting-point-node-id=27%3A10)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Considerações Finais
 
-### `npm run eject`
+Estou muito animado na progreção do meu conhecimento, inicialmente realizando o básico para que esse sistema funcione antes de aplicar qualquer complexidade. Estou muito otimista com a funcionalidade que ele terá, sendo possível exportar para outros sistemas de RPG, se necessário.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Algumas atualizações serão feitas no meu [Linkedin](https://www.linkedin.com/in/alexandre-santos-843820205/) de acordo com a progressão do projeto.
