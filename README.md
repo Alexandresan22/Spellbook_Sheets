@@ -18,7 +18,7 @@ Atualmente está sendo estudado requisições a APi's, react router dom, json-se
 
 ### `Aplicações que busco incluir no projeto`
 
-Não tenho conhecimento de redes ainda, porém planejo conectar o controle do Mestre da mesa com as demais fichas, assim "disponibilizando" itens aos jogadores por um comando remoto, mostrando imagens em seus monitores, áudios, texto tornando a jogatina muito mais dinâmica e divertimento aos participantes.
+Não tenho conhecimento de redes ainda, porém planejo conectar o controle do Mestre da mesa com as demais fichas, assim "disponibilizando" itens aos jogadores por um comando remoto, mostrando imagens em seus monitores, áudios ou textos, assim tornando a jogatina muito mais dinâmica e divertimento aos participantes.
 
 ### `Objetivos para a versão 1.0`
 
