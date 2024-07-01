@@ -2,4 +2,5 @@ main.App {
     width: 1250px;
     height: 100%;
     padding: 2rem 0 0 0;
+    flex: 1;
 }

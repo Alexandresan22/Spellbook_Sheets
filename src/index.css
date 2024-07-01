@@ -5,10 +5,9 @@
 }
 
 body,
-html,
-#root {
-    width: 100vw;
+html {
     height: 100vh;
+    min-height: 100%;
     font-family: "Poppins", sans-serif;
 }
 
@@ -18,6 +17,7 @@ html,
     align-items: center;
     flex-direction: column;
 
+    min-height: 100%;
     --color-tangerina: #f29559;
     --color-azul-profundo: #202c39;
     --color-porcelana: #f2d492;
