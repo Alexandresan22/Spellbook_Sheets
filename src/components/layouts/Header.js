@@ -15,7 +15,7 @@ function Header() {
                     </li>
                     <li>
                         <Link to="/">
-                            <img src={Logo} width={128} />
+                            <img src={Logo} width={128} alt="logo" />
                         </Link>
                     </li>
                     <li>

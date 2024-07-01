@@ -27,6 +27,7 @@ footer span {
     display: flex;
     flex-direction: column;
     justify-content: end;
+    font-weight: 100;
 }
 
 footer span {

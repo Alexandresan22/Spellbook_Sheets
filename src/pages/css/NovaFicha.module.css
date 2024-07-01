@@ -1,0 +1,56 @@
+.form {
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 3rem;
+}
+
+.form .line {
+    display: flex;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.biggerBox {
+    width: 100%;
+    border-radius: 30px;
+    border: 1px solid var(--color-tangerina);
+    padding: 0.5rem;
+}
+
+.textarea {
+    width: 100%;
+    min-height: 10rem;
+    border: none;
+    outline: none;
+    resize: none;
+    font-size: 16px;
+    padding: 0.5rem;
+    background: transparent;
+    color: var(--color-tangerina);
+}
+
+.textarea::placeholder {
+    color: var(--color-tangerina);
+    font-family: "Poppins";
+    font-weight: 200;
+}
+
+.textarea::-webkit-scrollbar {
+    width: 8px;
+}
+
+.textarea::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.textarea::-webkit-scrollbar-thumb {
+    background: var(--color-tangerina); /* cor da alça da barra de rolagem */
+    border-radius: 5px; /* arredondamento da alça da barra de rolagem */
+}
+
+.textarea::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,20 @@
+.btnSubmit {
+    margin: 1rem;
+}
+
+.btnSubmit button {
+    padding: 1rem 1.2rem;
+    background: transparent;
+    border-radius: 30px;
+    color: #f29559;
+    border: 3px solid #f29559;
+    font-weight: bold;
+    width: 120px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btnSubmit button:hover {
+    color: white;
+    background-color: #f29559;
+}

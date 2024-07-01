@@ -1,0 +1,6 @@
+h1.title {
+    color: var(--color-porcelana);
+    width: 100%;
+    border-bottom: 3px solid var(--color-porcelana);
+    margin-bottom: 2rem;
+}

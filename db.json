@@ -1,0 +1,41 @@
+{
+    "sheets": [],
+    "Charclasses": [
+        {
+            "id": "0",
+            "name": "Arqueiro"
+        },
+        {
+            "id": "1",
+            "name": "Bardo"
+        },
+        {
+            "id": "3",
+            "name": "Aventureiro"
+        },
+        {
+            "id": "4",
+            "name": "Bárbaro"
+        },
+        {
+            "id": "5",
+            "name": "Bárbaro"
+        }
+    ],
+
+    "races": [
+        { "id": 0, "name": "Anão" },
+        { "id": 1, "name": "Humano" },
+        { "id": 2, "name": "Orc" }
+    ],
+    "tendences": [
+        {
+            "id": "0",
+            "name": "Suicida"
+        },
+        {
+            "id": "1",
+            "name": "Pacificador"
+        }
+    ]
+}
