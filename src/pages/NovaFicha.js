@@ -10,7 +10,31 @@ import { useState, useEffect } from "react";
 function NovaFicha() {
     const submit = (e) => {
         e.preventDefault();
-        console.log(sheet);
+
+        sheet.attritutes = [
+            {
+                vitallity: 0,
+                strength: 0,
+                dexterity: 0,
+                inteligence: 0,
+                faith: 0,
+                knowledge: 0,
+                affinity: 0,
+            },
+        ];
+
+        fetch("http://localhost:5000/sheets", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(sheet),
+        })
+            .then((resp) => resp.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => console.log(err));
     };
 
     const [sheet, setSheet] = useState({});
@@ -110,13 +134,13 @@ function NovaFicha() {
             <form className={estilo.form} onSubmit={submit}>
                 <div className={estilo.line}>
                     <Input
-                        name="nome"
+                        name="name"
                         placeholder="Nome do Personagem"
                         handleOnChange={handleChange}
                     />
                     <Input
                         type="number"
-                        name="peso"
+                        name="weight"
                         placeholder="Peso (Kg)"
                         handleOnChange={handleChange}
                     />
