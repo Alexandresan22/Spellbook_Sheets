@@ -6,22 +6,30 @@ import Select from "../components/form/Select";
 import SubmitButton from "../components/form/SubmitButton";
 
 import { useState, useEffect } from "react";
+import Attributes from "../components/sheet/Attributes";
 
 function NovaFicha() {
+    const [sheet, setSheet] = useState({});
+
     const submit = (e) => {
         e.preventDefault();
-
-        sheet.attritutes = [
-            {
-                vitallity: 0,
-                strength: 0,
-                dexterity: 0,
-                inteligence: 0,
-                faith: 0,
-                knowledge: 0,
-                affinity: 0,
+        setMoreFicha((prevState) => ({
+            ...prevState,
+            states: {
+                ...prevState.states,
+                empty: true,
             },
-        ];
+        }));
+
+        sheet.attributes = {
+            vitallity: 0,
+            strength: 0,
+            dexterity: 0,
+            inteligence: 0,
+            faith: 0,
+            knowledge: 0,
+            affinity: 0,
+        };
 
         fetch("http://localhost:5000/sheets", {
             method: "POST",
@@ -33,16 +41,22 @@ function NovaFicha() {
             .then((resp) => resp.json())
             .then((data) => {
                 console.log(data);
+                setSheet(data);
             })
             .catch((err) => console.log(err));
     };
 
-    const [sheet, setSheet] = useState({});
     const [classes, setClasses] = useState([]);
     const [races, setRaces] = useState([]);
     const [tendences, setTendences] = useState([]);
     const [detailClass, setDetailClass] = useState();
     const [detailRace, setDetailRace] = useState();
+    const [moreFicha, setMoreFicha] = useState({
+        states: {
+            empty: false,
+            sheet: {},
+        },
+    });
 
     useEffect(() => {
         fetch("http://localhost:5000/Charclasses", {
@@ -82,7 +96,7 @@ function NovaFicha() {
             .catch((err) => console.log(err));
     }, []);
 
-    function hancdleChanger(char) {
+    function handleChanger(char) {
         setSheet({
             ...sheet,
             [char.target.name]:
@@ -97,7 +111,6 @@ function NovaFicha() {
         ) {
             const value = char.target.value;
             setDetailClass(classes[value]);
-            console.log(detailClass);
         } else if (
             char.target.options[
                 char.target.selectedIndex
@@ -131,166 +144,189 @@ function NovaFicha() {
     return (
         <Container>
             <Title title="Criação de personagem" />
-            <form className={estilo.form} onSubmit={submit}>
-                <div className={estilo.line}>
-                    <Input
-                        name="name"
-                        placeholder="Nome do Personagem"
-                        handleOnChange={handleChange}
-                    />
-                    <Input
-                        type="number"
-                        name="weight"
-                        placeholder="Peso (Kg)"
-                        handleOnChange={handleChange}
-                    />
-                    <Input
-                        type="number"
-                        name="height"
-                        placeholder="Altura (cm)"
-                        handleOnChange={handleChange}
-                    />
-                </div>
-                <div className={estilo.line}>
-                    <Select
-                        name="class"
-                        textOption="Classe"
-                        options={classes}
-                        handleOnChange={hancdleChanger}
-                    />
-                    <Select
-                        name="race"
-                        textOption="Raça"
-                        options={races}
-                        handleOnChange={hancdleChanger}
-                    />
-                    <Select
-                        name="tendences"
-                        textOption="Têndencia"
-                        options={tendences}
-                        handleOnChange={hancdleChanger}
-                    />
-                </div>
-                <div className={estilo.biggerBox}>
-                    <textarea
-                        name="description"
-                        placeholder="Descrição breve"
-                        className={estilo.textarea}
-                        onChange={handleChange}
-                    />
-                </div>
 
-                <h3 className={estilo.minTitle}>Bônus do personagem</h3>
-                <div className={estilo.analyzer}>
-                    {detailClass && (
-                        <div className={estilo.analyzerContent}>
-                            <div className={estilo.analyz}>
-                                <h3>Classe:</h3>
-                                <p>{detailClass.name}</p>
-                            </div>
-                            <div className={estilo.analyz}>
-                                <h3>Passiva:</h3>
-                                <p>{detailClass.passive}</p>
-                            </div>
-                            <div className={estilo.analyz}>
-                                <h3>Proficiência:</h3>
-                                <ul>
-                                    {detailClass.pericias.map((pericia) => (
-                                        <li key={pericia.id}>
-                                            <p>
-                                                {Number(pericia.id) + 1}.{" "}
-                                                {pericia.pericia}
-                                            </p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className={estilo.analyz}></div>
+            <div className={estilo.newSheet}>
+                {!moreFicha.states.empty && (
+                    <form className={estilo.form} onSubmit={submit}>
+                        <div className={estilo.line}>
+                            <Input
+                                name="name"
+                                placeholder="Nome do Personagem"
+                                handleOnChange={handleChange}
+                            />
+                            <Input
+                                type="number"
+                                name="weight"
+                                placeholder="Peso (Kg)"
+                                handleOnChange={handleChange}
+                            />
+                            <Input
+                                type="number"
+                                name="height"
+                                placeholder="Altura (cm)"
+                                handleOnChange={handleChange}
+                            />
                         </div>
-                    )}
+                        <div className={estilo.line}>
+                            <Select
+                                name="class"
+                                textOption="Classe"
+                                options={classes}
+                                handleOnChange={handleChanger}
+                            />
+                            <Select
+                                name="race"
+                                textOption="Raça"
+                                options={races}
+                                handleOnChange={handleChanger}
+                            />
+                            <Select
+                                name="tendences"
+                                textOption="Têndencia"
+                                options={tendences}
+                                handleOnChange={handleChanger}
+                            />
+                        </div>
+                        <div className={estilo.biggerBox}>
+                            <textarea
+                                name="description"
+                                placeholder="Descrição breve"
+                                className={estilo.textarea}
+                                onChange={handleChange}
+                            />
+                        </div>
 
-                    {!detailClass && (
-                        <div className={estilo.analyzerContent}>
-                            <div className={estilo.analyz}>
-                                <h3>Classe:</h3>
-                                <p>Classe Selecionada</p>
-                            </div>
-                            <div className={estilo.analyz}>
-                                <h3>Passiva:</h3>
-                                <p>Passiva da Classe</p>
-                            </div>
-                            <div className={estilo.analyz}>
-                                <h3>Proficiência:</h3>
-                                <ul>
-                                    <li>
-                                        <p>Proficiência da classe</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className={estilo.analyz}></div>
-                        </div>
-                    )}
+                        <h3 className={estilo.minTitle}>Bônus do personagem</h3>
+                        <div className={estilo.analyzer}>
+                            {detailClass && (
+                                <div className={estilo.analyzerContent}>
+                                    <div className={estilo.analyz}>
+                                        <h3>Classe:</h3>
+                                        <p>{detailClass.name}</p>
+                                    </div>
+                                    <div className={estilo.analyz}>
+                                        <h3>Passiva:</h3>
+                                        <p>{detailClass.passive}</p>
+                                    </div>
+                                    <div className={estilo.analyz}>
+                                        <h3>Proficiência:</h3>
+                                        <ul>
+                                            {detailClass.pericias.map(
+                                                (pericia) => (
+                                                    <li key={pericia.id}>
+                                                        <p>
+                                                            {Number(
+                                                                pericia.id
+                                                            ) + 1}
+                                                            . {pericia.pericia}
+                                                        </p>
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+                                    <div className={estilo.analyz}></div>
+                                </div>
+                            )}
 
-                    {detailRace && (
-                        <div className={estilo.analyzerContent}>
-                            <div className={estilo.analyz}>
-                                <h3>Raça:</h3>
-                                <p>{detailRace.name}</p>
-                            </div>
-                            <div className={estilo.analyz}>
-                                <h3>Talentos:</h3>
-                                <ul>
-                                    {detailRace.talents.map((talento) => (
-                                        <li key={talento.id}>
-                                            <p>
-                                                {Number(talento.id) + 1}.{" "}
-                                                {talento.talent}
-                                            </p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className={estilo.analyz}>
-                                <h3>Proficiência:</h3>
-                                <ul>
-                                    {detailRace.pericias.map((pericia) => (
-                                        <li key={pericia.id}>
-                                            <p>
-                                                {Number(pericia.id) + 1}.{" "}
-                                                {pericia.pericia}
-                                            </p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className={estilo.analyz}></div>
-                        </div>
-                    )}
-                    {!detailRace && (
-                        <div className={estilo.analyzerContent}>
-                            <div className={estilo.analyz}>
-                                <h3>Raça:</h3>
-                                <p>Raça Selecionada</p>
-                            </div>
-                            <div className={estilo.analyz}>
-                                <h3>Talentos:</h3>
-                                <p>Talentos da Raça</p>
-                            </div>
-                            <div className={estilo.analyz}>
-                                <h3>Proficiência:</h3>
-                                <ul>
-                                    <li>
-                                        <p>Proficiência da Raça</p>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className={estilo.analyz}></div>
-                        </div>
-                    )}
-                </div>
+                            {!detailClass && (
+                                <div className={estilo.analyzerContent}>
+                                    <div className={estilo.analyz}>
+                                        <h3>Classe:</h3>
+                                        <p>Classe Selecionada</p>
+                                    </div>
+                                    <div className={estilo.analyz}>
+                                        <h3>Passiva:</h3>
+                                        <p>Passiva da Classe</p>
+                                    </div>
+                                    <div className={estilo.analyz}>
+                                        <h3>Proficiência:</h3>
+                                        <ul>
+                                            <li>
+                                                <p>Proficiência da classe</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className={estilo.analyz}></div>
+                                </div>
+                            )}
 
-                <SubmitButton text="Próximo" />
-            </form>
+                            {detailRace && (
+                                <div className={estilo.analyzerContent}>
+                                    <div className={estilo.analyz}>
+                                        <h3>Raça:</h3>
+                                        <p>{detailRace.name}</p>
+                                    </div>
+                                    <div className={estilo.analyz}>
+                                        <h3>Talentos:</h3>
+                                        <ul>
+                                            {detailRace.talents.map(
+                                                (talento) => (
+                                                    <li key={talento.id}>
+                                                        <p>
+                                                            {Number(
+                                                                talento.id
+                                                            ) + 1}
+                                                            . {talento.talent}
+                                                        </p>
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+                                    <div className={estilo.analyz}>
+                                        <h3>Proficiência:</h3>
+                                        <ul>
+                                            {detailRace.pericias.map(
+                                                (pericia) => (
+                                                    <li key={pericia.id}>
+                                                        <p>
+                                                            {Number(
+                                                                pericia.id
+                                                            ) + 1}
+                                                            . {pericia.pericia}
+                                                        </p>
+                                                    </li>
+                                                )
+                                            )}
+                                        </ul>
+                                    </div>
+                                    <div className={estilo.analyz}></div>
+                                </div>
+                            )}
+                            {!detailRace && (
+                                <div className={estilo.analyzerContent}>
+                                    <div className={estilo.analyz}>
+                                        <h3>Raça:</h3>
+                                        <p>Raça Selecionada</p>
+                                    </div>
+                                    <div className={estilo.analyz}>
+                                        <h3>Talentos:</h3>
+                                        <p>Talentos da Raça</p>
+                                    </div>
+                                    <div className={estilo.analyz}>
+                                        <h3>Proficiência:</h3>
+                                        <ul>
+                                            <li>
+                                                <p>Proficiência da Raça</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className={estilo.analyz}></div>
+                                </div>
+                            )}
+                        </div>
+
+                        <SubmitButton type="submit" text="Próximo" />
+                    </form>
+                )}
+
+                {moreFicha.states.empty && (
+                    <div className={estilo.attributesContainer}>
+                        <Attributes sheet={sheet} preview={true} />{" "}
+                    </div>
+                )}
+            </div>
         </Container>
     );
 }

@@ -1,240 +1,208 @@
 {
-  "sheets": [
-    {
-      "name": "Alexandre Santos",
-      "weight": "125",
-      "height": "125",
-      "class": "Bardo",
-      "race": "Humano",
-      "tendences": "Pacificador",
-      "description": "Teste",
-      "id": 1
-    },
-    {
-      "name": "Alexandre Satiri",
-      "weight": "125",
-      "height": "125",
-      "class": "Bardo",
-      "race": "Humano",
-      "tendences": "Suicida",
-      "description": "O maior cantor de aquilor",
-      "attritutes": [
+    "sheets": [],
+    "Charclasses": [
         {
-          "vitallity": 0,
-          "strength": 0,
-          "dexterity": 0,
-          "inteligence": 0,
-          "faith": 0,
-          "knowledge": 0,
-          "affinity": 0
+            "id": "0",
+            "name": "Ladino",
+            "passive": "O ladino pode entrar na batalha a qualquer instante, até o terceiro turno. Ataques físicos que atordoam são mais eficientes contra ladinos: Mantem o ladino debilitado por mais 1 turno, sendo apenas possível atingi-lo após o segundo turno.",
+            "pericias": [
+                {
+                    "id": "0",
+                    "pericia": "Persuasão"
+                },
+                {
+                    "id": "1",
+                    "pericia": "Percepção"
+                }
+            ]
+        },
+        {
+            "id": "1",
+            "name": "Bardo",
+            "passive": "Classe sem passiva informada",
+            "pericias": [
+                {
+                    "id": "0",
+                    "pericia": "Persuasão"
+                },
+                {
+                    "id": "1",
+                    "pericia": "Percepção"
+                },
+                {
+                    "id": "2",
+                    "pericia": "Percepção"
+                },
+                {
+                    "id": "3",
+                    "pericia": "Percepção"
+                },
+                {
+                    "id": "4",
+                    "pericia": "Percepção"
+                },
+                {
+                    "id": "5",
+                    "pericia": "Percepção"
+                },
+                {
+                    "id": "6",
+                    "pericia": "Percepção"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "name": "Aventureiro",
+            "passive": "Classe sem passiva informada",
+            "pericias": [
+                {
+                    "id": "0",
+                    "pericia": "Persuasão"
+                },
+                {
+                    "id": "1",
+                    "pericia": "Percepção"
+                }
+            ]
+        },
+        {
+            "id": "3",
+            "name": "Bárbaro",
+            "passive": "Classe sem passiva informada",
+            "pericias": [
+                {
+                    "id": "0",
+                    "pericia": "Persuasão"
+                },
+                {
+                    "id": "1",
+                    "pericia": "Percepção"
+                }
+            ]
+        },
+        {
+            "id": "4",
+            "name": "Angelista",
+            "passive": "Passiva da Classe",
+            "pericias": [
+                {
+                    "id": "0",
+                    "pericia": "Persuasão"
+                },
+                {
+                    "id": "1",
+                    "pericia": "Percepção"
+                }
+            ]
         }
-      ],
-      "id": 2
-    }
-  ],
-  "Charclasses": [
-    {
-      "id": "0",
-      "name": "Ladino",
-      "passive": "O ladino pode entrar na batalha a qualquer instante, até o terceiro turno. Ataques físicos que atordoam são mais eficientes contra ladinos: Mantem o ladino debilitado por mais 1 turno, sendo apenas possível atingi-lo após o segundo turno.",
-      "pericias": [
+    ],
+    "races": [
         {
-          "id": "0",
-          "pericia": "Persuasão"
+            "id": 0,
+            "name": "Anão",
+            "life": "12",
+            "pericias": [
+                {
+                    "id": "0",
+                    "pericia": "Teste1"
+                },
+                {
+                    "id": "1",
+                    "pericia": "Teste2"
+                }
+            ],
+            "talents": [
+                {
+                    "id": 0,
+                    "name": "Nome 3",
+                    "talent": "Talento 1"
+                },
+                {
+                    "id": 1,
+                    "name": "Nome 2",
+                    "talent": "Talento 2"
+                },
+                {
+                    "id": 2,
+                    "name": "Nome 3",
+                    "talent": "Talento 3"
+                }
+            ]
         },
         {
-          "id": "1",
-          "pericia": "Percepção"
+            "id": 1,
+            "name": "Humano",
+            "life": "10",
+            "pericias": [
+                {
+                    "id": "0",
+                    "pericia": "Teste1"
+                },
+                {
+                    "id": "1",
+                    "pericia": "Teste2"
+                }
+            ],
+            "talents": [
+                {
+                    "id": 0,
+                    "name": "Nome 3",
+                    "talent": "Talento 1"
+                },
+                {
+                    "id": 1,
+                    "name": "Nome 2",
+                    "talent": "Talento 2"
+                },
+                {
+                    "id": 2,
+                    "name": "Nome 3",
+                    "talent": "Talento 3"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Orc",
+            "life": "12",
+            "pericias": [
+                {
+                    "id": "0",
+                    "pericia": "Teste1"
+                },
+                {
+                    "id": "1",
+                    "pericia": "Teste2"
+                }
+            ],
+            "talents": [
+                {
+                    "id": 0,
+                    "name": "Revigorante",
+                    "talent": "Tem curas aumentadas com 50% no valor total de qualquer fonte, durante batalhas, tem o valor acrescentado apenas em poções ou frascos de cura."
+                },
+                {
+                    "id": 1,
+                    "name": "Pesado",
+                    "talent": "É dificilmente levantado por qualquer fonte."
+                },
+                {
+                    "id": 2,
+                    "name": "Carga leve",
+                    "talent": "Pode exceder até 50% do valor atual da carga que carrega, sendo assim, diminui a dificuldade que inimigos tem de acerta-lo."
+                }
+            ]
         }
-      ]
-    },
-    {
-      "id": "1",
-      "name": "Bardo",
-      "passive": "Classe sem passiva informada",
-      "pericias": [
+    ],
+    "tendences": [
         {
-          "id": "0",
-          "pericia": "Persuasão"
+            "id": "0",
+            "name": "Suicida"
         },
         {
-          "id": "1",
-          "pericia": "Percepção"
-        },
-        {
-          "id": "2",
-          "pericia": "Percepção"
-        },
-        {
-          "id": "3",
-          "pericia": "Percepção"
-        },
-        {
-          "id": "4",
-          "pericia": "Percepção"
-        },
-        {
-          "id": "5",
-          "pericia": "Percepção"
-        },
-        {
-          "id": "6",
-          "pericia": "Percepção"
+            "id": "1",
+            "name": "Pacificador"
         }
-      ]
-    },
-    {
-      "id": "2",
-      "name": "Aventureiro",
-      "passive": "Classe sem passiva informada",
-      "pericias": [
-        {
-          "id": "0",
-          "pericia": "Persuasão"
-        },
-        {
-          "id": "1",
-          "pericia": "Percepção"
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "name": "Bárbaro",
-      "passive": "Classe sem passiva informada",
-      "pericias": [
-        {
-          "id": "0",
-          "pericia": "Persuasão"
-        },
-        {
-          "id": "1",
-          "pericia": "Percepção"
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "name": "Angelista",
-      "passive": "Passiva da Classe",
-      "pericias": [
-        {
-          "id": "0",
-          "pericia": "Persuasão"
-        },
-        {
-          "id": "1",
-          "pericia": "Percepção"
-        }
-      ]
-    }
-  ],
-  "races": [
-    {
-      "id": 0,
-      "name": "Anão",
-      "life": "12",
-      "pericias": [
-        {
-          "id": "0",
-          "pericia": "Teste1"
-        },
-        {
-          "id": "1",
-          "pericia": "Teste2"
-        }
-      ],
-      "talents": [
-        {
-          "id": 0,
-          "name": "Nome 3",
-          "talent": "Talento 1"
-        },
-        {
-          "id": 1,
-          "name": "Nome 2",
-          "talent": "Talento 2"
-        },
-        {
-          "id": 2,
-          "name": "Nome 3",
-          "talent": "Talento 3"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "name": "Humano",
-      "life": "10",
-      "pericias": [
-        {
-          "id": "0",
-          "pericia": "Teste1"
-        },
-        {
-          "id": "1",
-          "pericia": "Teste2"
-        }
-      ],
-      "talents": [
-        {
-          "id": 0,
-          "name": "Nome 3",
-          "talent": "Talento 1"
-        },
-        {
-          "id": 1,
-          "name": "Nome 2",
-          "talent": "Talento 2"
-        },
-        {
-          "id": 2,
-          "name": "Nome 3",
-          "talent": "Talento 3"
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Orc",
-      "life": "12",
-      "pericias": [
-        {
-          "id": "0",
-          "pericia": "Teste1"
-        },
-        {
-          "id": "1",
-          "pericia": "Teste2"
-        }
-      ],
-      "talents": [
-        {
-          "id": 0,
-          "name": "Revigorante",
-          "talent": "Tem curas aumentadas com 50% no valor total de qualquer fonte, durante batalhas, tem o valor acrescentado apenas em poções ou frascos de cura."
-        },
-        {
-          "id": 1,
-          "name": "Pesado",
-          "talent": "É dificilmente levantado por qualquer fonte."
-        },
-        {
-          "id": 2,
-          "name": "Carga leve",
-          "talent": "Pode exceder até 50% do valor atual da carga que carrega, sendo assim, diminui a dificuldade que inimigos tem de acerta-lo."
-        }
-      ]
-    }
-  ],
-  "tendences": [
-    {
-      "id": "0",
-      "name": "Suicida"
-    },
-    {
-      "id": "1",
-      "name": "Pacificador"
-    }
-  ]
+    ]
 }

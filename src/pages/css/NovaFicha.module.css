@@ -1,3 +1,9 @@
+.newSheet {
+    display: flex;
+    margin: 10vh 0;
+    flex: 1;
+}
+
 .form {
     width: 1250px;
     display: flex;

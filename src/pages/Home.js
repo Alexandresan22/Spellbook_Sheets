@@ -3,7 +3,7 @@ import estilo from "./css/Home.module.css";
 import { Link } from "react-router-dom";
 function Home() {
     return (
-        <Container>
+        <Container customClass="home">
             <div className={estilo.wellcome}>
                 <h1>
                     Seja Bem Vindo ao <span>SpellBook Sheets</span>

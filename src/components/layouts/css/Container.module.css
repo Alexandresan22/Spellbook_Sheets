@@ -4,7 +4,7 @@
     align-items: center;
     width: 100%;
     max-width: 1250px;
-    height: 100%;
+    flex: 1;
 }
 
 .start {
