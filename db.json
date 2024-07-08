@@ -1,208 +1,194 @@
 {
-    "sheets": [],
-    "Charclasses": [
+  "sheets": [],
+  "Charclasses": [
+    {
+      "id": "0",
+      "name": "Guerreiro",
+      "passive": "Ataque desleal; Causa dano critico a todo inimigo que tiver seu movimento ou ações debilitadas. (Multiplique ou jogue outro dado 'D10' para aplicar o dano)",
+      "pericias": [
         {
-            "id": "0",
-            "name": "Ladino",
-            "passive": "O ladino pode entrar na batalha a qualquer instante, até o terceiro turno. Ataques físicos que atordoam são mais eficientes contra ladinos: Mantem o ladino debilitado por mais 1 turno, sendo apenas possível atingi-lo após o segundo turno.",
-            "pericias": [
-                {
-                    "id": "0",
-                    "pericia": "Persuasão"
-                },
-                {
-                    "id": "1",
-                    "pericia": "Percepção"
-                }
-            ]
+          "id": "0",
+          "pericia": "Atletismo"
         },
         {
-            "id": "1",
-            "name": "Bardo",
-            "passive": "Classe sem passiva informada",
-            "pericias": [
-                {
-                    "id": "0",
-                    "pericia": "Persuasão"
-                },
-                {
-                    "id": "1",
-                    "pericia": "Percepção"
-                },
-                {
-                    "id": "2",
-                    "pericia": "Percepção"
-                },
-                {
-                    "id": "3",
-                    "pericia": "Percepção"
-                },
-                {
-                    "id": "4",
-                    "pericia": "Percepção"
-                },
-                {
-                    "id": "5",
-                    "pericia": "Percepção"
-                },
-                {
-                    "id": "6",
-                    "pericia": "Percepção"
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "name": "Aventureiro",
-            "passive": "Classe sem passiva informada",
-            "pericias": [
-                {
-                    "id": "0",
-                    "pericia": "Persuasão"
-                },
-                {
-                    "id": "1",
-                    "pericia": "Percepção"
-                }
-            ]
-        },
-        {
-            "id": "3",
-            "name": "Bárbaro",
-            "passive": "Classe sem passiva informada",
-            "pericias": [
-                {
-                    "id": "0",
-                    "pericia": "Persuasão"
-                },
-                {
-                    "id": "1",
-                    "pericia": "Percepção"
-                }
-            ]
-        },
-        {
-            "id": "4",
-            "name": "Angelista",
-            "passive": "Passiva da Classe",
-            "pericias": [
-                {
-                    "id": "0",
-                    "pericia": "Persuasão"
-                },
-                {
-                    "id": "1",
-                    "pericia": "Percepção"
-                }
-            ]
+          "id": "1",
+          "pericia": "Intimidação"
         }
-    ],
-    "races": [
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Ladino",
+      "passive": "O ladino pode entrar na batalha a qualquer instante, até o terceiro turno. Ataques físicos que atordoam são mais eficientes contra ladinos: Mantem o ladino debilitado por mais 1 turno, sendo apenas possível atingi-lo após o segundo turno.",
+      "pericias": [
         {
-            "id": 0,
-            "name": "Anão",
-            "life": "12",
-            "pericias": [
-                {
-                    "id": "0",
-                    "pericia": "Teste1"
-                },
-                {
-                    "id": "1",
-                    "pericia": "Teste2"
-                }
-            ],
-            "talents": [
-                {
-                    "id": 0,
-                    "name": "Nome 3",
-                    "talent": "Talento 1"
-                },
-                {
-                    "id": 1,
-                    "name": "Nome 2",
-                    "talent": "Talento 2"
-                },
-                {
-                    "id": 2,
-                    "name": "Nome 3",
-                    "talent": "Talento 3"
-                }
-            ]
+          "id": "0",
+          "pericia": "Persuasão"
         },
         {
-            "id": 1,
-            "name": "Humano",
-            "life": "10",
-            "pericias": [
-                {
-                    "id": "0",
-                    "pericia": "Teste1"
-                },
-                {
-                    "id": "1",
-                    "pericia": "Teste2"
-                }
-            ],
-            "talents": [
-                {
-                    "id": 0,
-                    "name": "Nome 3",
-                    "talent": "Talento 1"
-                },
-                {
-                    "id": 1,
-                    "name": "Nome 2",
-                    "talent": "Talento 2"
-                },
-                {
-                    "id": 2,
-                    "name": "Nome 3",
-                    "talent": "Talento 3"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Orc",
-            "life": "12",
-            "pericias": [
-                {
-                    "id": "0",
-                    "pericia": "Teste1"
-                },
-                {
-                    "id": "1",
-                    "pericia": "Teste2"
-                }
-            ],
-            "talents": [
-                {
-                    "id": 0,
-                    "name": "Revigorante",
-                    "talent": "Tem curas aumentadas com 50% no valor total de qualquer fonte, durante batalhas, tem o valor acrescentado apenas em poções ou frascos de cura."
-                },
-                {
-                    "id": 1,
-                    "name": "Pesado",
-                    "talent": "É dificilmente levantado por qualquer fonte."
-                },
-                {
-                    "id": 2,
-                    "name": "Carga leve",
-                    "talent": "Pode exceder até 50% do valor atual da carga que carrega, sendo assim, diminui a dificuldade que inimigos tem de acerta-lo."
-                }
-            ]
+          "id": "1",
+          "pericia": "Percepção"
         }
-    ],
-    "tendences": [
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Mago",
+      "passive": "Pode roubar parte do Poder Mágico de inimigos que foram mortos por magias que debilitam; jogar D6 para saber valor; caso inimigo tiver poder mágico, jogar D10. A passiva se acumula até o final da batalha.",
+      "pericias": [
         {
-            "id": "0",
-            "name": "Suicida"
+          "id": "0",
+          "pericia": "Arcanismo"
         },
         {
-            "id": "1",
-            "name": "Pacificador"
+          "id": "1",
+          "pericia": "História"
         }
-    ]
+      ]
+    }
+  ],
+  "races": [
+    {
+      "id": 0,
+      "name": "Anã",
+      "life": "12",
+      "pericias": [
+        {
+          "id": "0",
+          "pericia": "Atletismo"
+        },
+        {
+          "id": "1",
+          "pericia": "Arcanismo"
+        },
+        {
+          "id": "2",
+          "pericia": "Sobrevivência"
+        }
+      ],
+      "talents": [
+        {
+          "id": 0,
+          "name": "Munido na Forja",
+          "talent": "Munido na forja fará com que a defesa das armaduras fortifiquem-se. Diminui o peso carregado em 15% e aumenta a defesa em 20%"
+        },
+        {
+          "id": 1,
+          "name": "Anão Sobrevivente",
+          "talent": "Conhece a receita de criação de poções médias de cura"
+        },
+        {
+          "id": 2,
+          "name": "Militarismo Anão",
+          "talent": "Aumenta a eficácia do uso de espadas, machados, bestas leves e arcos de acordo com propriedades singulares"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "Humano",
+      "life": "10",
+      "pericias": [
+        {
+          "id": "0",
+          "pericia": "Blefar"
+        },
+        {
+          "id": "1",
+          "pericia": "Intuição"
+        }
+      ],
+      "talents": [
+        {
+          "id": 0,
+          "name": "Ganância",
+          "talent": "Humanos sempre tem sorte de jogar 1D10 e receber a quantidade de moedas encontradas no valor que cair. Só é valido no máximo até o ouro, e caso haja outras moedas, apenas 2 moedas poderão ser de ouro e o restante nas moedas menores."
+        },
+        {
+          "id": 1,
+          "name": "Lábia",
+          "talent": "Terá mais uma chance caso o teste em blefar falhar"
+        },
+        {
+          "id": 2,
+          "name": "Custo Beneficio",
+          "talent": "Caso produza, ou compre, algum item, terá 10% de chance de gerar uma cópia. Apenas para itens comuns"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Orc",
+      "life": "12",
+      "pericias": [
+        {
+          "id": "0",
+          "pericia": "Atletismo"
+        },
+        {
+          "id": "1",
+          "pericia": "Intimidação"
+        },
+        {
+          "id": "2",
+          "pericia": "Natureza"
+        }
+      ],
+      "talents": [
+        {
+          "id": 0,
+          "name": "Revigorante",
+          "talent": "Tem curas aumentadas com 50% no valor total de qualquer fonte, durante batalhas, tem o valor acrescentado apenas em poções ou frascos de cura."
+        },
+        {
+          "id": 1,
+          "name": "Pesado",
+          "talent": "É dificilmente levantado por qualquer fonte."
+        },
+        {
+          "id": 2,
+          "name": "Carga leve",
+          "talent": "Pode exceder até 50% do valor atual da carga que carrega, sendo assim, diminui a dificuldade que inimigos tem de acerta-lo."
+        }
+      ]
+    }
+  ],
+  "tendences": [
+    {
+      "id": "0",
+      "name": "Leal & Bom"
+    },
+    {
+      "id": "1",
+      "name": "Neutro & Bom"
+    },
+    {
+      "id": "2",
+      "name": "Caótico & Bom"
+    },
+    {
+      "id": "3",
+      "name": "Leal & Neutro"
+    },
+    {
+      "id": "4",
+      "name": "Neutro"
+    },
+    {
+      "id": "5",
+      "name": "Caótico & Neutro"
+    },
+    {
+      "id": "6",
+      "name": "Leal & Mau"
+    },
+    {
+      "id": "7",
+      "name": "Neutro & Mau"
+    },
+    {
+      "id": "8",
+      "name": "Caótico & Mau"
+    }
+  ]
 }

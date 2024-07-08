@@ -1,0 +1,57 @@
+.containerSheetCard {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.marginCard {
+    display: flex;
+    min-width: 100%;
+}
+
+.sheetCard {
+    border: 3px solid var(--color-tangerina);
+    box-shadow: inside 1px 1px 10px var(--color-tangerina);
+    border-radius: 30px;
+    border-top: none;
+    width: 100%;
+}
+
+.sheetCard h2 {
+    padding: 0.9rem 1.2rem;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: var(--color-tangerina);
+    color: white;
+}
+
+.contentCard {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contentCard div span {
+    color: white;
+    font-weight: bold;
+}
+
+.contentCard div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+#loading img {
+    max-width: 64px;
+}
+
+#loading {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}

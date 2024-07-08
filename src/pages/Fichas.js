@@ -1,9 +1,10 @@
 import Container from "../components/layouts/Container";
+import SheetCard from "../components/layouts/SheetCard";
 
 function Fichas() {
     return (
         <Container>
-            <p>Essa é a Fichas</p>
+            <SheetCard />
         </Container>
     );
 }

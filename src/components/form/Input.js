@@ -1,6 +1,15 @@
 import estilo from "./css/Input.module.css";
 
-function Input({ name, placeholder, value, type, text, handleOnChange }) {
+function Input({
+    name,
+    placeholder,
+    value,
+    type,
+    text,
+    handleOnChange,
+    requireState,
+    stepState,
+}) {
     return (
         <div className={`${estilo.form_input}`}>
             <label htmlFor={name}>{text}</label>
@@ -11,6 +20,8 @@ function Input({ name, placeholder, value, type, text, handleOnChange }) {
                 placeholder={placeholder}
                 value={value}
                 onChange={handleOnChange}
+                required={requireState}
+                step={stepState}
             ></input>
         </div>
     );

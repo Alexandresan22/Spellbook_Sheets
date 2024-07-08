@@ -153,18 +153,22 @@ function NovaFicha() {
                                 name="name"
                                 placeholder="Nome do Personagem"
                                 handleOnChange={handleChange}
+                                requireState={true}
                             />
                             <Input
                                 type="number"
                                 name="weight"
                                 placeholder="Peso (Kg)"
                                 handleOnChange={handleChange}
+                                requireState={true}
+                                stepState={0.01}
                             />
                             <Input
                                 type="number"
                                 name="height"
                                 placeholder="Altura (cm)"
                                 handleOnChange={handleChange}
+                                requireState={true}
                             />
                         </div>
                         <div className={estilo.line}>

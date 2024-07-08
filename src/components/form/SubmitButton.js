@@ -1,8 +1,8 @@
 import estilo from "./css/SubmitButton.module.css";
 
-function SubmitButton({ text, effect, type }) {
+function SubmitButton({ text, effect, type, customClass }) {
     return (
-        <div className={estilo.btnSubmit}>
+        <div className={`${estilo.btnSubmit} ${estilo[customClass]}`}>
             <button type={type} onClick={effect}>
                 {text}
             </button>
