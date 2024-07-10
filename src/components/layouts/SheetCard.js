@@ -7,7 +7,7 @@ import loading from "../../img/icon/loading.svg";
 function SheetCard() {
     const [sheets, setSheets] = useState([]);
     const [load, setLoad] = useState(true);
-    const endPoint = window.location.protocol + "//" + window.location.hostname;
+    const endPoint = "http:" + "//" + window.location.hostname;
     function del(id) {
         const sheetsUpdated = sheets.filter((e) => e.id !== id);
         const endPoint =

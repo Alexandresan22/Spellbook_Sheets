@@ -10,7 +10,7 @@ import Attributes from "../components/sheet/Attributes";
 
 function NovaFicha() {
     const [sheet, setSheet] = useState({});
-    const endPoint = window.location.protocol + "//" + window.location.hostname;
+    const endPoint = "http:" + "//" + window.location.hostname;
     const submit = (e) => {
         e.preventDefault();
         setMoreFicha((prevState) => ({

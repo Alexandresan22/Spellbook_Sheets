@@ -8,7 +8,7 @@ function Attributes({ sheet, preview }) {
     const [attributes, setAttributes] = useState(sheet.attributes);
     const [mod, setMod] = useState(modCalc);
     const history = useNavigate();
-    const endPoint = window.location.protocol + "//" + window.location.hostname;
+    const endPoint = "http:" + "//" + window.location.hostname;
     function modCalc() {
         let modCopy = [0, 0, 0, 0, 0, 0, 0];
 
