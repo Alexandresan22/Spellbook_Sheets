@@ -10,7 +10,7 @@ import Attributes from "../components/sheet/Attributes";
 
 function NovaFicha() {
     const [sheet, setSheet] = useState({});
-
+    const endPoint = window.location.protocol + "//" + window.location.hostname;
     const submit = (e) => {
         e.preventDefault();
         setMoreFicha((prevState) => ({
@@ -31,7 +31,7 @@ function NovaFicha() {
             affinity: 0,
         };
 
-        fetch("http://localhost:5000/sheets", {
+        fetch(`${endPoint}:5000/sheets`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function NovaFicha() {
     });
 
     useEffect(() => {
-        fetch("http://localhost:5000/Charclasses", {
+        fetch(`${endPoint}:5000/Charclasses`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -73,7 +73,7 @@ function NovaFicha() {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5000/races", {
+        fetch(`${endPoint}:5000/races`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         })
@@ -85,7 +85,7 @@ function NovaFicha() {
     }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5000/tendences", {
+        fetch(`${endPoint}:5000/tendences`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         })

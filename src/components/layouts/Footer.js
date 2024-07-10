@@ -14,7 +14,7 @@ function Footer() {
                         target="_blank"
                         to="https://www.facebook.com/Alexandre.San22"
                     >
-                        <img src={facebook} />
+                        <img alt="facebook" src={facebook} />
                     </Link>
                 </li>
                 <li>
@@ -22,7 +22,7 @@ function Footer() {
                         target="_blank"
                         to="https://www.instagram.com/alexandre_santos072/"
                     >
-                        <img src={instagram} />
+                        <img alt="instagram" src={instagram} />
                     </Link>
                 </li>
                 <li>
@@ -30,7 +30,7 @@ function Footer() {
                         target="_blank"
                         to="https://www.linkedin.com/in/alexandre-santos-843820205/"
                     >
-                        <img src={linkedin} />
+                        <img alt="linkedin" src={linkedin} />
                     </Link>
                 </li>
                 <li>
@@ -38,7 +38,7 @@ function Footer() {
                         target="_blank"
                         to="https://github.com/Alexandresan22"
                     >
-                        <img src={github} />
+                        <img alt="github" src={github} />
                     </Link>
                 </li>
             </ul>

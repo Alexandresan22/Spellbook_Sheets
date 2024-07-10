@@ -18,6 +18,7 @@ function App() {
                     <Route path="/sobre" element={<Sobre />} />
                     <Route path="/novaficha" element={<NovaFicha />} />
                     <Route path="/fichas" element={<Fichas />} />
+                    <Route path="/ficha/:id" />
                 </Routes>
             </main>
             <Footer />

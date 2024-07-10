@@ -7,13 +7,14 @@ import loading from "../../img/icon/loading.svg";
 function SheetCard() {
     const [sheets, setSheets] = useState([]);
     const [load, setLoad] = useState(true);
-
+    const endPoint = window.location.protocol + "//" + window.location.hostname;
     function del(id) {
         const sheetsUpdated = sheets.filter((e) => e.id !== id);
-
+        const endPoint =
+            window.location.protocol + "//" + window.location.hostname;
         setSheets(sheetsUpdated);
 
-        fetch(`http://localhost:5000/sheets/${id}`, {
+        fetch(`${endPoint}:5000/sheets/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "Application/json",
@@ -29,7 +30,7 @@ function SheetCard() {
 
     useEffect(() => {
         setTimeout(() => {
-            fetch("http://localhost:5000/sheets", {
+            fetch(`${endPoint}:5000/sheets`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "Application/json",

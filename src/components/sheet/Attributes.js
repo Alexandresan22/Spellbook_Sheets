@@ -8,6 +8,7 @@ function Attributes({ sheet, preview }) {
     const [attributes, setAttributes] = useState(sheet.attributes);
     const [mod, setMod] = useState(modCalc);
     const history = useNavigate();
+    const endPoint = window.location.protocol + "//" + window.location.hostname;
     function modCalc() {
         let modCopy = [0, 0, 0, 0, 0, 0, 0];
 
@@ -48,7 +49,7 @@ function Attributes({ sheet, preview }) {
     const send = () => {
         sheet = { ...sheet, attributes };
         console.log(sheet);
-        fetch(`http://localhost:5000/sheets/${sheet.id}`, {
+        fetch(`${endPoint}:5000/sheets/${sheet.id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
