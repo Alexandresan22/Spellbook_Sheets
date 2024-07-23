@@ -68,3 +68,8 @@ div.attributeBody {
     align-items: center;
     gap: 10vh;
 }
+
+.enable {
+    background-color: var(--color-tangerina) !important;
+    color: white;
+}

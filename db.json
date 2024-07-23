@@ -1,5 +1,38 @@
 {
-  "sheets": [],
+  "sheets": [
+    {
+      "experience": 53,
+      "level": 4,
+      "life": 400,
+      "mana": 400,
+      "blooded": 0,
+      "poisoned": 0,
+      "inventory": {
+        "equiped": {
+          "hand1": null,
+          "hand2": null,
+          "head": null,
+          "breastplate": null,
+          "pants": null
+        },
+        "inventory": {}
+      },
+      "name": "Teste",
+      "weight": "1000",
+      "height": "100",
+      "age": "100",
+      "attributes": {
+        "vitallity": 13,
+        "strength": 16,
+        "dexterity": 9,
+        "inteligence": 8,
+        "faith": 16,
+        "knowledge": 9,
+        "affinity": 9
+      },
+      "id": 2
+    }
+  ],
   "Charclasses": [
     {
       "id": "0",
@@ -189,6 +222,54 @@
     {
       "id": "8",
       "name": "Caótico & Mau"
+    }
+  ],
+  "weapons": [
+    {
+      "id": "daggers",
+      "daggers": {
+        "Adaga": {
+          "weapon attack": 0.8,
+          "critical attack": 2.5,
+          "demage": 6,
+          "requirements": {
+            "dexterity": 8,
+            "strength": 4
+          }
+        },
+        "Harpe": {
+          "weapon attack": 1,
+          "critical attack": 2.2,
+          "demage": 8,
+          "requirements": {
+            "dexterity": 12,
+            "strength": 8
+          }
+        },
+        "Faca de bandido": {
+          "weapon attack": 1,
+          "critical attack": 2.8,
+          "demage": 8,
+          "requirements": {
+            "dexterity": 16,
+            "strength": 8
+          }
+        }
+      }
+    },
+    {
+      "id": "straight_swords",
+      "straigth_swords": {
+        "espada reta": {
+          "weapon attack": 1,
+          "critical attack": 2,
+          "demage": 12,
+          "requirements": {
+            "strength": 12,
+            "dexterity": 16
+          }
+        }
+      }
     }
   ]
 }

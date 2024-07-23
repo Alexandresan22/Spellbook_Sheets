@@ -3,15 +3,15 @@ import estilo from "./css/SheetCard.module.css";
 import SubmitButton from "../form/SubmitButton";
 import Title from "../Title";
 import loading from "../../img/icon/loading.svg";
+import { Link } from "react-router-dom";
 
 function SheetCard() {
+    const endPoint = `http://${window.location.hostname}`;
     const [sheets, setSheets] = useState([]);
     const [load, setLoad] = useState(true);
-    const endPoint = "http:" + "//" + window.location.hostname;
     function del(id) {
         const sheetsUpdated = sheets.filter((e) => e.id !== id);
-        const endPoint =
-            window.location.protocol + "//" + window.location.hostname;
+
         setSheets(sheetsUpdated);
 
         fetch(`${endPoint}:5000/sheets/${id}`, {
@@ -51,22 +51,27 @@ function SheetCard() {
             {sheets &&
                 sheets.map((sheet) => (
                     <div key={sheet.id} className={estilo.marginCard}>
-                        <div className={estilo.sheetCard}>
-                            <h2>{sheet.name}</h2>
-                            <div className={estilo.contentCard}>
-                                <div>
-                                    <span>Classe:</span> <p>{sheet.class}</p>
-                                </div>
-                                <div>
-                                    <span>Descrição:</span>{" "}
-                                    <p>
+                        <Link to={`/ficha/${sheet.id}`}>
+                            <div className={estilo.sheetCard}>
+                                <h2>{sheet.name}</h2>
+                                <div className={estilo.contentCard}>
+                                    <div>
+                                        <span>Classe:</span>{" "}
                                         {!sheet.description &&
-                                            "Descrição não informada"}
-                                        {sheet.description}
-                                    </p>
+                                            "Classe não informada"}
+                                        {sheet.class}
+                                    </div>
+                                    <div>
+                                        <span>Descrição:</span>{" "}
+                                        <p>
+                                            {!sheet.description &&
+                                                "Descrição não informada"}
+                                            {sheet.description}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                         <SubmitButton
                             customClass="minimally"
                             effect={() => del(sheet.id)}
@@ -79,8 +84,7 @@ function SheetCard() {
                     <img alt="loading" src={loading}></img>
                 </div>
             )}
-
-            {!load && sheets.length === 0 && <p>Sem fichas para mostrar...</p>}
+            {!load && !sheets.length > 0 && <p>Sem fichas cadastradas</p>}
         </div>
     );
 }

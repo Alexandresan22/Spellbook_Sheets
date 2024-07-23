@@ -8,9 +8,29 @@ import SubmitButton from "../components/form/SubmitButton";
 import { useState, useEffect } from "react";
 import Attributes from "../components/sheet/Attributes";
 
+const endPoint = `http://${window.location.hostname}`;
+
 function NovaFicha() {
-    const [sheet, setSheet] = useState({});
-    const endPoint = "http:" + "//" + window.location.hostname;
+    const [sheet, setSheet] = useState({
+        experience: 0,
+        level: 1,
+        life: 0,
+        mana: 0,
+        blooded: 0,
+        poisoned: 0,
+        inventory: {
+            equiped: {
+                hand1: null,
+                hand2: null,
+                head: null,
+                breastplate: null,
+                pants: null,
+            },
+
+            inventory: {},
+        },
+    });
+
     const submit = (e) => {
         e.preventDefault();
         setMoreFicha((prevState) => ({
@@ -170,6 +190,13 @@ function NovaFicha() {
                                 handleOnChange={handleChange}
                                 requireState={true}
                             />
+                            <Input
+                                type="number"
+                                name="age"
+                                placeholder="Idade"
+                                handleOnChange={handleChange}
+                                requireState={true}
+                            />
                         </div>
                         <div className={estilo.line}>
                             <Select
@@ -184,6 +211,7 @@ function NovaFicha() {
                                 options={races}
                                 handleOnChange={handleChanger}
                             />
+
                             <Select
                                 name="tendences"
                                 textOption="Têndencia"

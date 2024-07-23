@@ -9,9 +9,11 @@ function Input({
     handleOnChange,
     requireState,
     stepState,
+    readState,
+    customClass,
 }) {
     return (
-        <div className={`${estilo.form_input}`}>
+        <div className={`${estilo.form_input} ${estilo[customClass]}`}>
             <label htmlFor={name}>{text}</label>
             <input
                 type={type}
@@ -22,6 +24,7 @@ function Input({
                 onChange={handleOnChange}
                 required={requireState}
                 step={stepState}
+                readOnly={readState}
             ></input>
         </div>
     );
