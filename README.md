@@ -28,4 +28,4 @@ Procuro inicialmente fazer com que a criação de fichas, gerenciamento dos elem
 
 Estou muito animado na progreção do meu conhecimento, inicialmente realizando o básico para que esse sistema funcione antes de aplicar qualquer complexidade. Estou muito otimista com a funcionalidade que ele terá, sendo possível exportar para outros sistemas de RPG, se necessário.
 
-Algumas atualizações serão feitas no meu [Linkedin](https://www.linkedin.com/in/alexandre-santos-843820205/) de acordo com a progressão do projeto.
+Algumas atualizações serão feitas no meu [Linkedin](https://www.linkedin.com/in/alexandre-santos-843820205/) de acordo com a progressão do prya
