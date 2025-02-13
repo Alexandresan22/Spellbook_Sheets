@@ -1,0 +1,65 @@
+.loginContainer{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    img{
+        width: 176px;
+    }
+
+    form{
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:1em;
+
+        #checkSenha{
+            display: block;
+        }
+
+        a.spanContent{
+            color: var(--principal-primary-color);
+        }
+
+        div{
+            gap: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: right;
+            width: 375px;
+
+            
+    
+        }
+
+        input{
+            padding: .6em 1.2em;
+            border: solid 4px var(--principal-primary-color);
+            border-radius: 16px;
+            background: none;
+            color: white;
+
+            &:focus{
+                outline: 0;
+            }
+        }
+
+        button{
+
+            width: 375px;
+            height: 2.6rem;
+            background-color: var(--principal-primary-color);
+            border: 0;
+            color: white;
+            font-weight: bold;
+
+        }
+
+    }
+   
+}

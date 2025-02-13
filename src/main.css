@@ -13,9 +13,34 @@ body, html, #root{
     height: 100%;
 }
 
+:root{
+
+    --background-color : #202C39;
+    --principal-primary-color : #F29559;
+    --principal-secondary-color : #F2D492;
+    --primary-color : #B8B08D;
+    --secondary-color : #283845;
+
+}
+
 #root{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: var(--background-color);
+    overflow-y: auto;
+}
+
+p.errorMessage{
+
+    color: var(--principal-primary-color);
+    font-weight: bold;
+
+}
+
+a#backError{
+
+    color: white;
+
 }

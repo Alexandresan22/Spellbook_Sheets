@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import {Outlet, Navigate} from 'react-router-dom'
 
-const ProtectedRoutes = ()=>{
+const ProtectedRoutes = ({user})=>{
 
-    const user = null
+    const [userState, setUserState] = useState(user);
+    console.log(user)
     
-    return user ? <Outlet/> : <Navigate to='/login'/>
+    return userState ? <Outlet/> : <Navigate to='/login'/>
 
 }
 
