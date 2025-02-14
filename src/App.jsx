@@ -10,6 +10,9 @@ import Error404 from './pages/error404.jsx'
 
 function App() {
 
+        const [user, setUser] = useState(localStorage.getItem('userEmail'))
+        console.log(localStorage.getItem('userName'))
+
   return (
     
       <>
@@ -18,11 +21,11 @@ function App() {
 
               
 
-              <Route  element={<ProtectedRoutes user={false} />}>
+              <Route  element={<ProtectedRoutes user={user ? user : false} />}>
               <Route path={'/'} element={<Home />}/>
               </Route>
 
-              <Route  element={<AuthLayout user={false}/>}>
+              <Route  element={<AuthLayout user={user ? user : false}/>}>
 
                 <Route  path='login' element={<Login />}/>
                 <Route path='register' element={<Register />}/>

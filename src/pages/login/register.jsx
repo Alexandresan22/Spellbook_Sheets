@@ -1,46 +1,61 @@
 import estilo from './css/login.module.css'
 import logo from '../../img/Logo/logo.png'
 import {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { createUserWithEmailAndPassword  } from 'firebase/auth';
+import {auth} from '../../firebase-config'
 
 const Register = () =>{
     
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
     const [confSenha, setConfSenha] = useState('')
-    const [senhaChecked, setSenhaChecked] = useState(false)
-    const setValueLoginEmail = (e)=>{
+    const [senhaChecked, setSenhaChecked] = useState(false);
+    const [redirect, setRedirect] = useState(false);
+    const navigate = useNavigate()
 
-        setEmail(e.target.value)
+    const submit = (e, email)=>{
+            e.preventDefault
+            const emailContent = document.getElementById(`${estilo.checkEmail}`)
+            
 
+          if(validarEmail(email) && senhaChecked){
+            emailContent.style.display = 'none'
+            
+            createUserWithEmailAndPassword(auth, email, senha)
+                .then((userCredential) => {
+                // Signed up 
+                const user = userCredential.user;
+                console.log(user)
+                    navigate('/login')
+                // ...
+                })
+                .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
 
-    }
-
-    const setValueLoginPassword = (e)=>{
-
-        setSenha(e.target.value)
-
-
-    }
-
-    const checkPassword = (e)=>{
-
-        setConfSenha(e.target.value)
+                console.log(errorCode)
+                // ..
+                });
+          }else{
+                emailContent.style.display = 'block'
+          }
+          
+          
+           
 
         
-
     }
 
-    const submit = (e)=>{
-        console.log(e)
-
-        e.preventDefault
-
-        
+    if (redirect) {
+        return <Navigate to="/login" />;
     }
 
     useEffect(()=>{
-        if(confSenha === senha) {
+        if(!confSenha || !senha){
+            const span = document.getElementById(`${estilo.checkSenha}`)
+            span.style.display = 'none'
+        }else if(confSenha === senha) {
             const span = document.getElementById(`${estilo.checkSenha}`)
             setSenhaChecked(true)
             span.style.display = 'none'
@@ -50,8 +65,13 @@ const Register = () =>{
             span.style.display = 'block'
             setSenhaChecked(false)
         }
-    }, [confSenha, confSenha > 0 ? senha : 'none'])
+    }, [confSenha, senha])
 
+
+    function validarEmail (email) {
+        var emailPattern =  /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+         return emailPattern.test(email); 
+      }
 
     return (
         
@@ -65,21 +85,22 @@ const Register = () =>{
 
                 <img src={logo}/>
 
-                <form action={submit}>
+                <form action={(e)=>{submit(e, email)}}>
                     <div>
-                        <label>E-mail</label>
-                        <input type="text" onChange={setValueLoginEmail} placeholder="Digite seu e-mail" value={email} />
+                        <label htmlFor='email'>E-mail</label>
+                        <input id='email' name='email' type="text" onChange={(e) =>{setEmail(e.target.value)}} placeholder="Digite seu e-mail" value={email} />
                     </div>
                     <div>
                         <label>Senha</label>
-                        <input type="password" onChange={setValueLoginPassword} placeholder='Digite sua senha' value={senha} />
+                        <input type="password" onChange={(e)=>{setSenha(e.target.value)}} placeholder='Digite sua senha' value={senha} />
                     </div>
                     <div>
                         <label>Confirmar Senha</label>
-                        <input type="password" onChange={checkPassword} placeholder='Digite sua senha' value={confSenha} />
+                        <input type="password" onChange={(e)=>{ setConfSenha(e.target.value)}} placeholder='Digite sua senha' value={confSenha} />
                     </div>
                         <span className={estilo.spanContent}>Esqueceu sua senha?</span>
                         <span id={estilo.checkSenha}>A senha está incorreta!</span>
+                        <span id={estilo.checkEmail}>O Email está digitado de forma incorreta, verifique novamente!</span>
                         <button>Registrar</button>
 
                         <span>já tem conta? <Link to='/login'className={estilo.spanContent}> Acesse aqui</Link></span>
