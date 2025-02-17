@@ -55,5 +55,6 @@ span#messagesWarning {
     color: rgb(39, 99, 39);
     border: solid 6px rgb(39, 99, 39);
     right: 2vw;
-    bottom: 18vh;
+    top: 6vh;
+    box-shadow: 0px 10px 25px black;
 }
