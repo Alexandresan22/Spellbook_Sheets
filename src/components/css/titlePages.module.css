@@ -1,0 +1,8 @@
+h2.titlePages {
+    width: 100%;
+    border-bottom: solid 4px var(--principal-secondary-color);
+    color: var(--principal-secondary-color);
+    font-size: 2.4rem;
+    font-weight: bold;
+    text-align: start;
+}

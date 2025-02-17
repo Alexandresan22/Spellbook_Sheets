@@ -1,46 +1,59 @@
-*{
-
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins';
+    font-family: "poppins";
     font-style: normal;
-    
 }
 
-body, html, #root{
+body,
+html,
+#root {
     width: 100%;
     height: 100%;
+    overflow-x: hidden;
 }
 
-:root{
-
-    --background-color : #202C39;
-    --principal-primary-color : #F29559;
-    --principal-secondary-color : #F2D492;
-    --primary-color : #B8B08D;
-    --secondary-color : #283845;
-
+:root {
+    --background-color: #202c39;
+    --principal-primary-color: #f29559;
+    --principal-secondary-color: #f2d492;
+    --primary-color: #b8b08d;
+    --secondary-color: #283845;
 }
 
-#root{
+#root {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     background-color: var(--background-color);
     overflow-y: auto;
+    color: white;
 }
 
-p.errorMessage{
-
+p.errorMessage {
     color: var(--principal-primary-color);
     font-weight: bold;
-
 }
 
-a#backError{
-
+a#backError {
     color: white;
+}
 
+span#messagesWarning {
+    position: fixed;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 0.4rem;
+    font-weight: bold;
+    height: 55px;
+    width: 425px;
+    background-color: rgb(112, 230, 112);
+    color: rgb(39, 99, 39);
+    border: solid 6px rgb(39, 99, 39);
+    right: 2vw;
+    bottom: 18vh;
 }

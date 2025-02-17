@@ -1,16 +1,15 @@
-import {Navigate, Outlet} from 'react-router-dom'
-import { useState } from 'react'
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useState } from "react";
 
-    
+const AuthLayout = ({}) => {
+    const [user, setUser] = useState(localStorage.getItem("userEmail"));
+    const location = useLocation;
 
-const AuthLayout = ({user})=>{
+    return user ? (
+        <Navigate to="/" state={{ key: "Autenticação já realizada" }} />
+    ) : (
+        <Outlet />
+    );
+};
 
-    const [userState, setUserState] = useState(user ? user : false);
-    console.log(user) 
-
-
-     return userState ? <Navigate to='/'/> : <Outlet />
-
-}
-
-export default AuthLayout
+export default AuthLayout;

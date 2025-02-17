@@ -1,0 +1,25 @@
+button#buttonComponent {
+    color: var(--principal-primary-color);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 1rem 2em;
+    border: solid 2px var(--principal-primary-color);
+    border-radius: 32px;
+    background-color: transparent;
+    transition: 0.3s;
+
+    a {
+        text-decoration: none;
+        color: var(--principal-primary-color);
+    }
+
+    &:hover {
+        background-color: var(--principal-primary-color);
+        color: white;
+
+        a {
+            color: white;
+        }
+    }
+}
