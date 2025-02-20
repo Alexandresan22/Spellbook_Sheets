@@ -11,7 +11,7 @@ const Home = () => {
 
     return (
         <>
-            <title>Spellbook Sheets | Home</title>
+            <title>SpellBook Sheets | Home</title>
 
             <NavBar />
 
