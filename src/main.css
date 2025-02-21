@@ -20,6 +20,7 @@ html,
     --principal-secondary-color: #f2d492;
     --primary-color: #b8b08d;
     --secondary-color: #283845;
+    --error-message: #f64c4c;
 }
 
 #root {

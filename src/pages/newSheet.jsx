@@ -16,6 +16,7 @@ const NewSheet = () => {
     const [charName, setCharName] = useState('');
     const [charHeight, setCharHeight] = useState('')
     const [charWeight, setCharWeight] = useState('');
+    const [charAge, setCharAge] = useState('')
     const [charClass, setCharClass] = useState(null);
     const [charRace, setCharRace] = useState(null);
     const [charTendence, setCharTendence] = useState(null);
@@ -23,6 +24,7 @@ const NewSheet = () => {
     const [dbCharClasses, setDbCharClasses] = useState([]);
     const [dbCharRaces, setDbCharRaces] = useState([]);
     const [dbCharTendences, setdbCharTendences] = useState([])
+    const [errorMessage, setErrorMessage] = useState(false)
     const testOption = [{"id": 0, "name" : "Guerreiro" }, {"id" : 1, "name": "Ladino"}];
 
     const charClasses = collection(db, 'charClasses')
@@ -70,7 +72,7 @@ const NewSheet = () => {
 
             e.preventdefault
 
-            if(charClass != null && charRace != null && charName.length > 0 && Number(charHeight) > 0 && Number(charWeight) > 0){
+            if(charClass != null && Number(charAge) > 0 && charRace != null && charName.length > 0 && Number(charHeight) > 0 && Number(charWeight) > 0){
                 setSheet( {
                     [charName] : {
 
@@ -80,7 +82,7 @@ const NewSheet = () => {
             'charClass' : charClass,
             'race' : charRace,
             'Tendence' : charTendence,
-            'age': 0,
+            'age': charAge,
             'description' : charDescription,
             'inventory' : {
                 'balance': {
@@ -88,6 +90,22 @@ const NewSheet = () => {
                     'gold' : 0,
                     'silver' : 0,
                     'copper' : 0
+                },
+                'itemsList' : {
+
+                },
+                'itemsEquiped' : {
+                    'hand' : {
+                        'hand1': '',
+                        'hand2' : ''
+                    },
+                    'armor' : {
+                        'helmet' : '',
+                        'armor' : '',
+                        'shin-pads' : '',
+                        'legs' : ''
+                    }
+
                 }
             }
 
@@ -95,7 +113,9 @@ const NewSheet = () => {
         }
                 })
             } else{
-                console.log('Há algo não preenchido')
+    
+                setErrorMessage(true)
+    
             }
             
 
@@ -107,6 +127,17 @@ const NewSheet = () => {
         console.log(sheet)
 
     }, [sheet])
+
+    useEffect(()=>{
+
+        const timer = setTimeout(() => {
+            setErrorMessage(false); 
+        }, 4000);
+
+        return () => clearTimeout(timer);
+    
+
+    }, [errorMessage])
 
     return (
         <>
@@ -148,6 +179,15 @@ const NewSheet = () => {
                             onChange={(e)=>{ setCharWeight(e.target.value)}} 
                         />
 
+                        <input 
+                            name="charAge"
+                            id="charAge"
+                            className={estilo.newSheetInput}  
+                            type='number' placeholder="Idade"
+                            value={charAge} 
+                            onChange={(e)=>{ setCharAge(e.target.value)}} 
+                        />
+
                         <Select options={dbCharClasses} name={'charClass'} textOption='Classe' handleOnChange={(e)=>{ setCharClass(Number(e.target.value) >= 0 ? dbCharClasses[`${e.target.value}`].name : null)}}/>
                         <Select options={dbCharRaces} name={'charRace'} textOption='Raça' handleOnChange={(e)=>{ setCharRace(Number(e.target.value) >= 0 ? dbCharRaces[`${e.target.value}`].name : null)}}/>
                         <Select options={dbCharTendences} name={'charTendence'} textOption='Têndencias' handleOnChange={(e)=>{ setCharTendence(Number(e.target.value) >= 0 ? dbCharTendences[`${e.target.value}`].name : null)}}/>  
@@ -156,7 +196,10 @@ const NewSheet = () => {
                         
                         <button>Próximo</button>
 
-                    </form> 
+                        {errorMessage ? <span className={estilo.warningMessage}>Faltam dados a serem preenchidos</span> : null }
+
+                    </form>
+
                 
                 )}
 
