@@ -5,11 +5,13 @@ import estilo from "./css/newSheet.module.css";
 import {useEffect, useState} from 'react'
 import Select from '../components/select.jsx'
 import { db } from "../firebase-config.js";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc } from "firebase/firestore";
  import loadingImg from '../img/icon/loading.svg'
+ import { getDatabase, ref, set } from "firebase/database"; 
 
 const NewSheet = () => {
 
+    const userUID = localStorage.getItem('userUID')
     const [loadingState, setLoadingState] = useState(true)
     const [sheet, setSheet] = useState({})
 
@@ -104,10 +106,32 @@ const NewSheet = () => {
                         'armor' : '',
                         'shin-pads' : '',
                         'legs' : ''
+                    },
+                    'amulets' : {
+                        'amulet1' : '',
+                        'amulet2' : ''
                     }
 
                 }
-            }
+            },
+            'attributes' : {
+                'strenght' : 0,
+                'dexterity' : 0,
+                'inteligence' : 0,
+                'vigor' : 0,
+                'knowledge' : 0,
+                'faith' : 0,
+                'affinity' : 0
+            },
+            'status' : {
+                'life' : 0,
+                'shield' : 0,
+                'mana' : 0,
+                'experience' : 0,  
+                'level' : 0
+            },
+            'bonuses' : {}
+
 
 
         }
@@ -123,8 +147,11 @@ const NewSheet = () => {
     }
 
     useEffect((e)=>{
+            const usersSheets = collection(db, 'usersSheets/' + userUID)
 
-        console.log(sheet)
+            const sheetDoc =  addDoc(usersSheets, {sheet});
+
+        console.log(sheetDoc)
 
     }, [sheet])
 
@@ -166,17 +193,19 @@ const NewSheet = () => {
                             name='charHeight'
                             id='charHeight'
                             className={estilo.newSheetInput} 
-                            type="number" placeholder="Altura" 
+                            type="number" placeholder="Altura (cm)" 
                             value={`${charHeight}`} onChange={(e)=>{ setCharHeight(e.target.value)}} 
+                            step='0.01'
                         />
 
                         <input 
                             name="charWeight"
                             id="charWeight"
                             className={estilo.newSheetInput}  
-                            type='number' placeholder="Peso"
+                            type='number' placeholder="Peso (Kg)"
                             value={charWeight} 
-                            onChange={(e)=>{ setCharWeight(e.target.value)}} 
+                            onChange={(e)=>{ setCharWeight(e.target.value)}}
+                            step='0.01'
                         />
 
                         <input 
