@@ -5,9 +5,9 @@ import estilo from "./css/newSheet.module.css";
 import {useEffect, useState} from 'react'
 import Select from '../components/select.jsx'
 import { db } from "../firebase-config.js";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs, addDoc, doc, setDoc } from "firebase/firestore";
  import loadingImg from '../img/icon/loading.svg'
- import { getDatabase, ref, set } from "firebase/database"; 
+
 
 const NewSheet = () => {
 
@@ -27,13 +27,46 @@ const NewSheet = () => {
     const [dbCharRaces, setDbCharRaces] = useState([]);
     const [dbCharTendences, setdbCharTendences] = useState([])
     const [errorMessage, setErrorMessage] = useState(false)
-    const testOption = [{"id": 0, "name" : "Guerreiro" }, {"id" : 1, "name": "Ladino"}];
 
     const charClasses = collection(db, 'charClasses')
     const charRaces = collection(db, 'charRaces')
     const charTendences = collection(db, 'charTendences')
 
-    // console.log([charClass, charRace, charTendence, charName, charHeight, charWeight])?
+
+
+    const addUserSheets = async (userId) => {
+       
+          const userSheetRef = doc(db, "usersSheets", userId);
+
+          console.log(userSheetRef)
+          
+          await setDoc(userSheetRef, { criadoEm: new Date() });
+     
+      };
+
+    const verifiedAcess = async ()=>{
+        
+
+                const querySnapshot = await getDocs(collection(db, 'usersSheets'));
+                const usersUID = querySnapshot.docs.map((e)=> e.id)
+
+            if(usersUID.includes(userUID)){
+                console.log('Tudo certinho')
+            } else{
+
+
+
+               addUserSheets(userUID)
+
+                
+
+            }
+
+    }
+
+    verifiedAcess()
+
+
 
     useEffect(()=>{
 
@@ -50,13 +83,6 @@ const NewSheet = () => {
         getCharClasses()
 
     }, [])
-
-
-    const varSheet = {
-
-        
-
-    }
 
 
 
@@ -146,15 +172,6 @@ const NewSheet = () => {
         
     }
 
-    useEffect((e)=>{
-            const usersSheets = collection(db, 'usersSheets/' + userUID)
-
-            const sheetDoc =  addDoc(usersSheets, {sheet});
-
-        console.log(sheetDoc)
-
-    }, [sheet])
-
     useEffect(()=>{
 
         const timer = setTimeout(() => {
@@ -165,6 +182,18 @@ const NewSheet = () => {
     
 
     }, [errorMessage])
+
+
+
+
+    useEffect(  ()=>{
+
+
+        const sheetsRef = collection(db, "usersSheets", userUID, "sheets");
+
+         addDoc(sheetsRef, sheet)
+
+    }, [sheet])
 
     return (
         <>
