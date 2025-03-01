@@ -7,13 +7,25 @@ import Select from '../components/select.jsx'
 import { db } from "../firebase-config.js";
 import { collection, getDocs, addDoc, doc, setDoc } from "firebase/firestore";
  import loadingImg from '../img/icon/loading.svg'
+import { useNavigate } from "react-router-dom";
+import Attributes from '../components/attributes.jsx'
 
 
 const NewSheet = () => {
-
-    const userUID = localStorage.getItem('userUID')
     const [loadingState, setLoadingState] = useState(true)
-    const [sheet, setSheet] = useState({})
+    const [sheet, setSheet] = useState({
+        
+        attributes : {
+            strenght : 0,
+            dexterity : 0,
+            inteligence : 0,
+            vigor : 0,
+            knowledge : 0,
+            faith : 0,
+            affinity : 0
+        }
+    
+    ,})
 
     const [charName, setCharName] = useState('');
     const [charHeight, setCharHeight] = useState('')
@@ -23,7 +35,7 @@ const NewSheet = () => {
     const [charRace, setCharRace] = useState(null);
     const [charTendence, setCharTendence] = useState(null);
     const [charDescription, setCharDescription] = useState(null)
-    const [dbCharClasses, setDbCharClasses] = useState([]);
+    const [dbCharClasses, setDbCharClasses] = useState([    ]);
     const [dbCharRaces, setDbCharRaces] = useState([]);
     const [dbCharTendences, setdbCharTendences] = useState([])
     const [errorMessage, setErrorMessage] = useState(false)
@@ -32,39 +44,7 @@ const NewSheet = () => {
     const charRaces = collection(db, 'charRaces')
     const charTendences = collection(db, 'charTendences')
 
-
-
-    const addUserSheets = async (userId) => {
-       
-          const userSheetRef = doc(db, "usersSheets", userId);
-
-          console.log(userSheetRef)
-          
-          await setDoc(userSheetRef, { criadoEm: new Date() });
-     
-      };
-
-    const verifiedAcess = async ()=>{
-        
-
-                const querySnapshot = await getDocs(collection(db, 'usersSheets'));
-                const usersUID = querySnapshot.docs.map((e)=> e.id)
-
-            if(usersUID.includes(userUID)){
-                console.log('Tudo certinho')
-            } else{
-
-
-
-               addUserSheets(userUID)
-
-                
-
-            }
-
-    }
-
-    verifiedAcess()
+    
 
 
 
@@ -90,7 +70,8 @@ const NewSheet = () => {
 
     useEffect(()=>{
        
-        dbCharClasses && dbCharRaces ? setLoadingState(false) : false
+        dbCharClasses.length > 0 && dbCharRaces.length > 0 ? setLoadingState(false) : false
+
 
     }, [dbCharClasses, dbCharRaces])
 
@@ -102,66 +83,69 @@ const NewSheet = () => {
 
             if(charClass != null && Number(charAge) > 0 && charRace != null && charName.length > 0 && Number(charHeight) > 0 && Number(charWeight) > 0){
                 setSheet( {
-                    [charName] : {
+                    
 
-            'name': charName,
-            'height': Number(charHeight),
-            'weight' :  Number(charWeight),
-            'charClass' : charClass,
-            'race' : charRace,
-            'Tendence' : charTendence,
-            'age': charAge,
-            'description' : charDescription,
-            'inventory' : {
-                'balance': {
-                    'platinum' : 0,
-                    'gold' : 0,
-                    'silver' : 0,
-                    'copper' : 0
+            name: charName,
+            height: Number(charHeight),
+            weight :  Number(charWeight),
+            charClass : charClass,
+            race : charRace,
+            Tendence : charTendence,
+            age: charAge,
+            description : charDescription,
+            inventory : {
+                balance: {
+                    platinum : 0,
+                    gold : 0,
+                    silver : 0,
+                    copper : 0
                 },
-                'itemsList' : {
+                itemsList : {
 
                 },
-                'itemsEquiped' : {
-                    'hand' : {
-                        'hand1': '',
-                        'hand2' : ''
+                itemsEquiped : {
+                    hand : {
+                        hand1: '',
+                        hand2 : ''
                     },
-                    'armor' : {
-                        'helmet' : '',
-                        'armor' : '',
+                    armor : {
+                        helmet : '',
+                        armor : '',
                         'shin-pads' : '',
-                        'legs' : ''
+                        legs : ''
                     },
-                    'amulets' : {
-                        'amulet1' : '',
-                        'amulet2' : ''
-                    }
+                    amulets : {
+                        amulet1 : '',
+                        amulet2 : ''
+                    },
+                    
 
                 }
             },
-            'attributes' : {
-                'strenght' : 0,
-                'dexterity' : 0,
-                'inteligence' : 0,
-                'vigor' : 0,
-                'knowledge' : 0,
-                'faith' : 0,
-                'affinity' : 0
+           attributes : {
+                strenght : 0,
+                dexterity : 0,
+                inteligence : 0,
+                vigor : 0,
+                knowledge : 0,
+                faith : 0,
+                affinity : 0
             },
-            'status' : {
-                'life' : 0,
-                'shield' : 0,
-                'mana' : 0,
-                'experience' : 0,  
-                'level' : 0
+            status : {
+                life : 0,
+                shield : 0,
+                mana : 0,
+                experience : 0,  
+                level : 0,
+                BleedingAcc : 0,
+                PoisonAcc : 0
             },
-            'bonuses' : {}
+            bonuses : {}
 
+    })
 
+                    
 
-        }
-                })
             } else{
     
                 setErrorMessage(true)
@@ -189,11 +173,34 @@ const NewSheet = () => {
     useEffect(  ()=>{
 
 
-        const sheetsRef = collection(db, "usersSheets", userUID, "sheets");
 
-         addDoc(sheetsRef, sheet)
+            
+            if(sheet != null) { const nameDoc = `${charName}_${Date.now()}`;
+
+            // const sheetsRef = doc(collection(db, "usersSheets", userUID, "sheets"), nameDoc.replace(/ /g, "_"));
+            // setDoc(sheetsRef, sheet);
+            
+        
+        }
+         
 
     }, [sheet])
+
+
+    // abaixo prossegue conteúdo para o segundo passo do cadastro da ficha do personagem
+
+    const [balanceChar_Gold, setBalanceChar_Gold] = useState(0)
+
+
+
+    const submitAttributes = (e)=>{
+
+        e.preventdefault
+
+
+
+    }
+
 
     return (
         <>
@@ -206,7 +213,24 @@ const NewSheet = () => {
             <main className={estilo.newSheetContainer}>
                 <TitlePages title="Criação de ficha de personagem" />
 
-                {loadingState ? <img id={estilo.loadingImg}src={loadingImg} /> : (                 
+                {loadingState ? <img src={loadingImg} id={estilo.loadingImg} /> : null }
+
+                {sheet != null && !loadingState ? (
+
+                        <form action={submitAttributes}>
+
+                            <Attributes attributes={sheet.attributes} />
+
+                        </form>
+
+                ) : null }
+
+                {sheet == null  && !loadingState ? (
+
+            
+                    
+                    
+                    
                     
                     <form action={submitSheet}>
 
@@ -258,8 +282,11 @@ const NewSheet = () => {
 
                     </form>
 
+
+
+                ) : null}
+
                 
-                )}
 
             </main>
 

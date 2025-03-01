@@ -1,0 +1,23 @@
+
+
+    input.inputAttributes{
+
+        width: 100px;
+        height: 100px;
+        padding: 1rem;
+        border-radius: 150px;
+        text-align: center;
+        font-size: 2rem;
+        font-family: 'poppins';
+        background-color: transparent;
+        border: 4px solid var(--principal-primary-color);
+        color: white;
+
+        &:focus{
+
+            outline: none;
+
+        }
+
+    }
+

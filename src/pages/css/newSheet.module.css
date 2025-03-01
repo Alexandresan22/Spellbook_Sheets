@@ -88,7 +88,7 @@ main.newSheetContainer {
             }
         }
 
-        input{
+        input.newSheetInput {
 
             width: 23.7%;
             padding: .5rem 1rem;
