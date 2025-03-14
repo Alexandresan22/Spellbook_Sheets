@@ -1,5 +1,6 @@
 nav {
     width: 100%;
+    min-height: 225px;
     max-width: 1920px;
     height: 152px;
     padding: 3rem 0;

@@ -1,0 +1,47 @@
+.expertiseContainer{
+
+    h3{
+        text-align: center;
+        margin: 2.7rem 0;
+        color: var(--principal-primary-color);
+    }
+    
+    ul.horizontal{
+
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr); 
+        grid-template-rows: repeat(5, 1fr); 
+        gap: 1rem;
+
+    }
+
+    ul.expertiseElement{  
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        li{ 
+            display: flex;
+            list-style: none;
+            p{
+    
+               min-width: 125px;
+               margin: 0 1rem;
+               text-align: right;
+    
+            }
+            span{
+
+                color: var(--principal-primary-color);
+                width: 75px;
+                border-bottom: 2px solid var(--principal-primary-color);
+
+            }
+
+        }
+    
+    }
+
+}
+
+

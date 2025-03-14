@@ -1,3 +1,4 @@
+import { modCalc } from "../assets/spellbookSheets";
 import estilo from "./css/attributes.module.css";
 
 const Attributes = ({ attributes, handleOnChange, keyDown, readStatus }) => {
@@ -16,6 +17,7 @@ const Attributes = ({ attributes, handleOnChange, keyDown, readStatus }) => {
                         readOnly={readStatus}
                     />
                     <label>Força</label>
+                    <p>{modCalc(attributes.strenght)}</p>
                 </li>
 
                 <li>
@@ -30,6 +32,7 @@ const Attributes = ({ attributes, handleOnChange, keyDown, readStatus }) => {
                         readOnly={readStatus}
                     />
                     <label>Destreza</label>
+                    <p>{modCalc(attributes.dexterity)}</p>
                 </li>
 
                 <li>
@@ -46,6 +49,7 @@ const Attributes = ({ attributes, handleOnChange, keyDown, readStatus }) => {
                         readOnly={readStatus}
                     />
                     <label>Inteligência</label>
+                    <p>{modCalc(attributes.inteligence)}</p>
                 </li>
 
                 <li>
@@ -62,6 +66,7 @@ const Attributes = ({ attributes, handleOnChange, keyDown, readStatus }) => {
                         readOnly={readStatus}
                     />
                     <label>Vigor</label>
+                    <p>{modCalc(attributes.vigor)}</p>
                 </li>
 
                 <li>
@@ -78,6 +83,7 @@ const Attributes = ({ attributes, handleOnChange, keyDown, readStatus }) => {
                         readOnly={readStatus}
                     />
                     <label>Conhecimento</label>
+                    <p>{modCalc(attributes.knowledge)}</p>
                 </li>
 
                 <li>
@@ -94,6 +100,7 @@ const Attributes = ({ attributes, handleOnChange, keyDown, readStatus }) => {
                         readOnly={readStatus}
                     />
                     <label>Afinidade</label>
+                    <p>{modCalc(attributes.affinity)}</p>
                 </li>
 
                 <li>
@@ -110,6 +117,7 @@ const Attributes = ({ attributes, handleOnChange, keyDown, readStatus }) => {
                         readOnly={readStatus}
                     />
                     <label>Fé</label>
+                    <p>{modCalc(attributes.faith)}</p>
                 </li>
             </ul>
         </>

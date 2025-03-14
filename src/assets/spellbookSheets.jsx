@@ -40,3 +40,13 @@ export const attributesValuesChange = (e, object) => {
         },
     }));
 };
+
+
+export const modCalc = (attributeValue) => {
+
+    const modValue = (attributeValue - 10) / 2
+
+    return Math.floor(modValue)
+
+
+}

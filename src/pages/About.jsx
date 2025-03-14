@@ -1,6 +1,7 @@
 import { TitlePages } from "../components/titlePages";
 import estilo from "./css/about.module.css";
 import { NavBar } from "../components/navBar";
+import Footer from "../components/footer";
 
 const About = () => {
     return (
@@ -22,6 +23,8 @@ const About = () => {
                     JavaScript.
                 </p>
             </div>
+
+            <Footer />
         </>
     );
 };

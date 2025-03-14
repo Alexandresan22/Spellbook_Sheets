@@ -13,21 +13,13 @@ import {
     verifyKeyAttributes,
     attributesValuesChange,
 } from "../assets/spellbookSheets.jsx";
+import {ExpertiseChar} from '../components/expertiseChar.jsx'
 
 const NewSheet = () => {
     const [loadingState, setLoadingState] = useState(true);
-    const [sheet, setSheet] = useState({
-        attributes: {
-            strenght: 0,
-            dexterity: 0,
-            inteligence: 0,
-            vigor: 0,
-            knowledge: 0,
-            faith: 0,
-            affinity: 0,
-        },
-    });
-
+    const [sheet, setSheet] = useState();
+    const navigate = useNavigate()
+    const userUID = localStorage.getItem('userUID')
     const [charName, setCharName] = useState("");
     const [charHeight, setCharHeight] = useState("");
     const [charWeight, setCharWeight] = useState("");
@@ -40,6 +32,18 @@ const NewSheet = () => {
     const [dbCharRaces, setDbCharRaces] = useState([]);
     const [dbCharTendences, setdbCharTendences] = useState([]);
     const [errorMessage, setErrorMessage] = useState(false);
+    const [attributes, setAttributes] = useState({
+        attributes: {
+            strenght: 0,
+            dexterity: 0,
+            inteligence: 0,
+            vigor: 0,
+            knowledge: 0,
+            faith: 0,
+            affinity: 0,
+        }
+       
+    })
 
     const charClasses = collection(db, "charClasses");
     const charRaces = collection(db, "charRaces");
@@ -65,14 +69,15 @@ const NewSheet = () => {
     }, []);
 
     useEffect(() => {
+        console.log(dbCharClasses)
         dbCharClasses.length > 0 && dbCharRaces.length > 0
             ? setLoadingState(false)
             : false;
     }, [dbCharClasses, dbCharRaces]);
 
-    const submitSheet = (e) => {
-        e.preventdefault;
-
+    const submitSheet = async (e) => {
+        e.preventDefault(); // ✅ Impede o reload da página
+    
         if (
             charClass != null &&
             Number(charAge) > 0 &&
@@ -81,7 +86,9 @@ const NewSheet = () => {
             Number(charHeight) > 0 &&
             Number(charWeight) > 0
         ) {
-            setSheet({
+            const nameDoc = `${charName}_${Date.now()}`.replace(/ /g, "_");
+    
+            const newSheet = {
                 name: charName,
                 height: Number(charHeight),
                 weight: Number(charWeight),
@@ -134,11 +141,24 @@ const NewSheet = () => {
                     PoisonAcc: 0,
                 },
                 bonuses: {},
-            });
+                charID: nameDoc,
+            };
+    
+            setSheet(newSheet); // ✅ Atualiza o estado
+    
+            try {
+                const sheetsRef = doc(collection(db, "usersSheets", userUID, "sheets"), nameDoc);
+                await setDoc(sheetsRef, newSheet); // ✅ Garante que os dados estão corretos antes de salvar
+                console.log("Ficha salva com sucesso!");
+            } catch (error) {
+                console.error("Erro ao salvar a ficha:", error);
+            }
         } else {
             setErrorMessage(true);
+            return;
         }
     };
+    
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -148,14 +168,8 @@ const NewSheet = () => {
         return () => clearTimeout(timer);
     }, [errorMessage]);
 
-    useEffect(() => {
-        if (sheet != null) {
-            const nameDoc = `${charName}_${Date.now()}`;
-            console.log(sheet);
-            // const sheetsRef = doc(collection(db, "usersSheets", userUID, "sheets"), nameDoc.replace(/ /g, "_"));
-            // setDoc(sheetsRef, sheet);
-        }
-    }, [sheet]);
+
+
 
     // ----
     // ----
@@ -173,7 +187,19 @@ const NewSheet = () => {
     const [balanceChar_Gold, setBalanceChar_Gold] = useState(0);
 
     const submitAttributes = (e) => {
-        e.preventdefault;
+        e.preventDefault();
+    
+        setSheet(prevSheet => {
+            const updatedSheet = { ...prevSheet, attributes };
+            console.log(updatedSheet); 
+    
+            const sheetsRef = doc(collection(db, "usersSheets", userUID, "sheets"), prevSheet.charID);
+            setDoc(sheetsRef, updatedSheet)
+                .then(() => navigate('/', {state : {key : 'Ficha cadastrada com sucesso'}})) 
+                .catch(err => console.error("Erro ao salvar ficha:", err));
+    
+            return updatedSheet;
+        });
     };
 
     return (
@@ -189,22 +215,24 @@ const NewSheet = () => {
                 ) : null}
 
                 {sheet != null && !loadingState ? (
-                    <form id={estilo.formAttributes} action={submitAttributes}>
+                    <form id={estilo.formAttributes} onSubmit={submitAttributes}>
                         <Attributes
-                            attributes={sheet.attributes}
+                            attributes={attributes.attributes}
                             handleOnChange={(e) =>
-                                attributesValuesChange(e, setSheet)
+                                attributesValuesChange(e, setAttributes)
                             }
                             keyDown={verifyKeyAttributes}
                             readStatus={false}
                         />
+
+                        <ExpertiseChar horizontalState={true} attributes={attributes.attributes}/>
 
                         <button id={estilo.buttonAttributes}>Concluir</button>
                     </form>
                 ) : null}
 
                 {sheet == null && !loadingState ? (
-                    <form action={submitSheet}>
+                    <form onSubmit={submitSheet}>
                         <input
                             name="charName"
                             id="charName"
