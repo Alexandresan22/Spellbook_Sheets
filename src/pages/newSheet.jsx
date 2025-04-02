@@ -45,6 +45,18 @@ const NewSheet = () => {
        
     })
 
+
+    /// inicio details
+
+
+            const [classPass, setClassPass] = useState();
+            const [classExp, setClassExp] = useState([]);
+            const [raceTalent , setRaceTalent] = useState([])
+            const [raceExp, setRaceExp] = useState([])
+
+
+    /// fim details
+
     const charClasses = collection(db, "charClasses");
     const charRaces = collection(db, "charRaces");
     const charTendences = collection(db, "charTendences");
@@ -69,14 +81,13 @@ const NewSheet = () => {
     }, []);
 
     useEffect(() => {
-        console.log(dbCharClasses)
         dbCharClasses.length > 0 && dbCharRaces.length > 0
             ? setLoadingState(false)
             : false;
     }, [dbCharClasses, dbCharRaces]);
 
     const submitSheet = async (e) => {
-        e.preventDefault(); // ✅ Impede o reload da página
+        e.preventDefault();
     
         if (
             charClass != null &&
@@ -144,11 +155,11 @@ const NewSheet = () => {
                 charID: nameDoc,
             };
     
-            setSheet(newSheet); // ✅ Atualiza o estado
+            setSheet(newSheet);
     
             try {
                 const sheetsRef = doc(collection(db, "usersSheets", userUID, "sheets"), nameDoc);
-                await setDoc(sheetsRef, newSheet); // ✅ Garante que os dados estão corretos antes de salvar
+                await setDoc(sheetsRef, newSheet);
                 console.log("Ficha salva com sucesso!");
             } catch (error) {
                 console.error("Erro ao salvar a ficha:", error);
@@ -167,6 +178,7 @@ const NewSheet = () => {
 
         return () => clearTimeout(timer);
     }, [errorMessage]);
+
 
 
 
@@ -202,6 +214,8 @@ const NewSheet = () => {
         });
     };
 
+
+
     return (
         <>
             <title>SpellBook Sheets | Criação de Personagem</title>
@@ -232,110 +246,228 @@ const NewSheet = () => {
                 ) : null}
 
                 {sheet == null && !loadingState ? (
-                    <form onSubmit={submitSheet}>
-                        <input
-                            name="charName"
-                            id="charName"
-                            className={estilo.newSheetInput}
-                            placeholder="Nome do personagem"
-                            value={charName}
-                            onChange={(e) => {
-                                setCharName(e.target.value);
-                            }}
-                        />
+                    <div className={estilo.datailsStep}>
+                        <form onSubmit={submitSheet}>
+                            <input
+                                name="charName"
+                                id="charName"
+                                className={estilo.newSheetInput}
+                                placeholder="Nome do personagem"
+                                value={charName}
+                                onChange={(e) => {
+                                    setCharName(e.target.value);
+                                }}
+                            />
 
-                        <input
-                            name="charHeight"
-                            id="charHeight"
-                            className={estilo.newSheetInput}
-                            type="number"
-                            placeholder="Altura (cm)"
-                            value={`${charHeight}`}
-                            onChange={(e) => {
-                                setCharHeight(e.target.value);
-                            }}
-                            step="0.01"
-                        />
+                            <input
+                                name="charHeight"
+                                id="charHeight"
+                                className={estilo.newSheetInput}
+                                type="number"
+                                placeholder="Altura (cm)"
+                                value={`${charHeight}`}
+                                onChange={(e) => {
+                                    setCharHeight(e.target.value);
+                                }}
+                                step="0.01"
+                            />
 
-                        <input
-                            name="charWeight"
-                            id="charWeight"
-                            className={estilo.newSheetInput}
-                            type="number"
-                            placeholder="Peso (Kg)"
-                            value={charWeight}
-                            onChange={(e) => {
-                                setCharWeight(e.target.value);
-                            }}
-                            step="0.01"
-                        />
+                            <input
+                                name="charWeight"
+                                id="charWeight"
+                                className={estilo.newSheetInput}
+                                type="number"
+                                placeholder="Peso (Kg)"
+                                value={charWeight}
+                                onChange={(e) => {
+                                    setCharWeight(e.target.value);
+                                }}
+                                step="0.01"
+                            />
 
-                        <input
-                            name="charAge"
-                            id="charAge"
-                            className={estilo.newSheetInput}
-                            type="number"
-                            placeholder="Idade"
-                            value={charAge}
-                            onChange={(e) => {
-                                setCharAge(e.target.value);
-                            }}
-                        />
+                            <input
+                                name="charAge"
+                                id="charAge"
+                                className={estilo.newSheetInput}
+                                type="number"
+                                placeholder="Idade"
+                                value={charAge}
+                                onChange={(e) => {
+                                    setCharAge(e.target.value);
+                                }}
+                            />
 
-                        <Select
-                            options={dbCharClasses}
-                            name={"charClass"}
-                            textOption="Classe"
-                            handleOnChange={(e) => {
-                                setCharClass(
-                                    Number(e.target.value) >= 0
-                                        ? dbCharClasses[`${e.target.value}`]
-                                              .name
-                                        : null
-                                );
-                            }}
-                        />
-                        <Select
-                            options={dbCharRaces}
-                            name={"charRace"}
-                            textOption="Raça"
-                            handleOnChange={(e) => {
-                                setCharRace(
-                                    Number(e.target.value) >= 0
-                                        ? dbCharRaces[`${e.target.value}`].name
-                                        : null
-                                );
-                            }}
-                        />
-                        <Select
-                            options={dbCharTendences}
-                            name={"charTendence"}
-                            textOption="Têndencias"
-                            handleOnChange={(e) => {
-                                setCharTendence(
-                                    Number(e.target.value) >= 0
-                                        ? dbCharTendences[`${e.target.value}`]
-                                              .name
-                                        : null
-                                );
-                            }}
-                        />
+                            <Select
+                                options={dbCharClasses}
+                                name={"charClass"}
+                                textOption="Classe"
+                                handleOnChange={(e) => {
+                                    setCharClass(
+                                        Number(e.target.value) >= 0
+                                            ? dbCharClasses[`${e.target.value}`]
+                                                .name
+                                            : 'Não definido'
+                                    );
+                                    setClassPass(
+                                    Number(e.target.value) >= 0 && dbCharClasses[`${e.target.value}`].passive 
+                                    ? dbCharClasses[`${e.target.value}`].passive
+                                    : 'Passiva não definida'
+                                    )
+                                    setClassExp(
+                                    Number(e.target.value) >= 0 && dbCharClasses[`${e.target.value}`].expertises 
+                                    ? dbCharClasses[`${e.target.value}`].expertises
+                                    : []
+                                    )
+                                }}
+                            />
+                            <Select
+                                options={dbCharRaces}
+                                name={"charRace"}
+                                textOption="Raça"
+                                handleOnChange={(e) => {
+                                    setCharRace(
+                                        Number(e.target.value) >= 0
+                                            ? dbCharRaces[`${e.target.value}`].name
+                                            : null
+                                    );
+                                    setRaceTalent(
+                                        Number(e.target.value) >= 0
+                                            ? dbCharRaces[`${e.target.value}`].talents
+                                            : [])
 
-                        <textarea
-                            id="charDescription"
-                            placeholder="Descreva os detalhes do personagem"
-                            name="charDescription"
-                            onChange={(e) => setCharDescription(e.target.value)}
-                        />
+                                            setRaceExp(
+                                                Number(e.target.value) >= 0 && dbCharRaces[`${e.target.value}`].expertises 
+                                                ? dbCharRaces[`${e.target.value}`].expertises
+                                                : []
+                                                )
 
-                        <button>Próximo</button>
+                                                console.log(dbCharRaces[`${e.target.value}`].expertises)
+                                }}
 
-                        {errorMessage ? (
-                            <span className={estilo.warningMessage}>
-                                Faltam dados a serem preenchidos
-                            </span>
-                        ) : null}
-                    </form>
+                            />
+                            <Select
+                                options={dbCharTendences}
+                                name={"charTendence"}
+                                textOption="Têndencias"
+                                handleOnChange={(e) => {
+                                    setCharTendence(
+                                        Number(e.target.value) >= 0
+                                            ? dbCharTendences[`${e.target.value}`]
+                                                .name
+                                            : null
+                                    );
+                                }}
+                            />
+
+                            <textarea
+                                id="charDescription"
+                                placeholder="Descreva os detalhes do personagem"
+                                name="charDescription"
+                                onChange={(e) => setCharDescription(e.target.value)}
+                            />
+
+                            <button>Próximo</button>
+
+                            {errorMessage ? (
+                                <span className={estilo.warningMessage}>
+                                    Faltam dados a serem preenchidos
+                                </span>
+                            ) : null}
+                        </form>
+
+                        <div id={estilo.bonusesChar}>
+                            
+                                <h3>Bônus do personagem</h3>
+
+                            <ul>
+
+                            <li>
+                                    <span>
+                                        Classe:
+                                    </span>
+                                    <p> {charClass ? charClass : 'Não definido'} </p> 
+                                </li>
+                                <li>
+                                    
+                                    <span>
+                                        Talentos: 
+                                    </span>
+                                    <p>{classPass ? classPass : 'Passiva não definida'}</p>
+
+                                </li>
+                                <li>
+
+                                    <span>
+
+                                        Perícias: 
+
+                                    </span>
+
+                                        <ul>
+
+                                            {classExp.length >= 1 ? (
+                                                classExp.map((element, index) => <li key={element}><p>{index + 1}. {element}</p></li>)
+                                            ) : (
+                                                <p>Não há perícias</p>
+                                            )}
+
+                                        </ul>
+
+                                    
+
+                                </li>
+                            </ul>
+                            <ul>
+
+                                <li>
+                                    <span>
+                                        Raça:
+                                    </span>
+                                    <p> {charRace ? charRace : 'Não definido'} </p> 
+                                </li>
+                                <li>
+                                    
+                                    <span>
+                                        Talentos: 
+                                    </span>
+                                            <ul>
+                                                { Array.isArray(raceTalent) && raceTalent.length >= 1 ? (
+                                                    raceTalent.map((element, index) => <li key={element}><p>{index + 1}. {element}</p></li>)
+                                                ) : (
+                                                    <p>Não definido</p>
+                                                )}
+                                            </ul>
+                                        
+
+                                </li>
+                                <li>
+
+                                    <span>
+
+                                        Perícias: 
+
+                                    </span>
+
+                                        <ul>
+
+                                            {Array.isArray(raceExp) && raceExp.length >= 1 ? (
+                                                raceExp.map((element, index) => <li key={element}><p>{index + 1}. {element}</p></li>)
+                                            ) : (
+                                                <p>Não há perícias</p>
+                                            )}
+
+                                        </ul>
+
+                                    
+
+                                </li>
+                            </ul>
+
+                        </div>
+
+
+                    
+                    </div>
                 ) : null}
             </main>
 
